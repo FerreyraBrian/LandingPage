@@ -34,8 +34,8 @@ export default function RegistrationModal({ onClose, onSuccess }: Props) {
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
         <button className={styles.closeBtn} onClick={onClose}>×</button>
-        <h3>Antes de jogar...</h3>
-        <p>Preencha os dados abaixo para liberar seu passaporte celestial.</p>
+        <h3>Antes de iniciar sua jornada...</h3>
+        <p>Preencha os dados abaixo para desbloquear seu passaporte celestial e aceder ao desafio.</p>
         
         <form onSubmit={handleSubmit} data-netlify="true" name="registro-juego">
           <input type="hidden" name="form-name" value="registro-juego" />

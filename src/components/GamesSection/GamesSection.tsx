@@ -50,10 +50,10 @@ export default function GamesSection() {
       };
     }
     return {
-      opacity: 0.3,
+      opacity: 0.6,
       transform: 'scale(0.9)',
       pointerEvents: 'none' as const,
-      filter: 'blur(3px)'
+      filter: 'blur(1.5px)'
     };
   };
 
@@ -62,7 +62,7 @@ export default function GamesSection() {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2>Tobogã de Emoções</h2>
-          <p>Desbloqueie os jogos e descubra seu nível de espanhol!</p>
+          <p>Desvende os enigmas e descubra a profundidade do seu conhecimento em espanhol.</p>
         </div>
 
         <div className={styles.gamesContainer} style={{ display: 'flex', flexDirection: 'column', gap: '30px', position: 'relative' }}>
@@ -70,8 +70,8 @@ export default function GamesSection() {
           {unlockedLevel === 0 && (
             <div className={styles.lockedOverlayAbsolute}>
               <div className={styles.lockedOverlayContent}>
-                <h3>Pronto para o Desafio?</h3>
-                <p style={{ marginBottom: '20px', color: 'var(--blue-sky)' }}>Inscreva-se para liberar o primeiro jogo!</p>
+                <h3>Preparado para a Jornada?</h3>
+                <p style={{ marginBottom: '20px', color: 'var(--blue-sky)' }}>Registre-se para iniciar sua imersão cultural e linguística.</p>
                 <button className={styles.startBtn} onClick={handleStartClick}>
                   COMEÇAR
                 </button>
@@ -136,12 +136,12 @@ export default function GamesSection() {
           
           {unlockedLevel === 6 && (
             <div className={styles.finalSuccess}>
-              <h3 style={{ fontSize: '3rem' }}>¡Felicidades! 🎉🏆</h3>
+              <h3 style={{ fontSize: '3rem' }}>¡Enhorabuena! 🎉🏆</h3>
               <p style={{ fontSize: '1.5rem', marginTop: '20px', color: 'var(--yellow-horizon)' }}>
-                Você completou todos os níveis do nosso Tobogã de Emoções. 
+                Você concluiu com maestria todos os níveis do nosso Tobogã de Emoções. 
                 <br/>Sua jornada celestial com o idioma espanhol está apenas começando!
               </p>
-              <p style={{ marginTop: '20px' }}>Nossa equipe entrará em contato com você em breve.</p>
+              <p style={{ marginTop: '20px' }}>Nossa equipe de coordenação acadêmica entrará em contato em breve para guiar seus próximos passos.</p>
             </div>
           )}
         </div>
