@@ -30,7 +30,7 @@ export default function LeadForm() {
   };
 
   return (
-    <section className={${styles.section} reveal}>
+    <section className={`${styles.section} reveal`}>
       <div className={styles.container}>
         <div className={styles.content}>
           <h2>Quer falar direto com a gente?</h2>

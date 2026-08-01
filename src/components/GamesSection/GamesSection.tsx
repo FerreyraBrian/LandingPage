@@ -58,7 +58,7 @@ export default function GamesSection() {
   };
 
   return (
-    <section className={${styles.section} reveal}>
+    <section className={`${styles.section} reveal`}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2>Tobogã de Emoções</h2>
