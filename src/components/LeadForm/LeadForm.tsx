@@ -33,8 +33,8 @@ export default function LeadForm() {
     <section className={`${styles.section} reveal`}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <h2>Deseja falar diretamente conosco?</h2>
-          <p>Preencha os dados abaixo e nossa equipe acadêmica entrará em contato em breve.</p>
+          <h2>Dê o próximo passo na sua carreira</h2>
+          <p>Preencha o formulário abaixo e receba um atendimento personalizado da nossa equipe acadêmica.</p>
         </div>
         
         <form className={styles.form} onSubmit={handleSubmit} data-netlify="true" name="consulta-directa">

@@ -42,8 +42,8 @@ export default function CelestialCarousel() {
       </div>
       
       <div className={styles.heroText}>
-        <h1>A fluência é uma jornada celestial</h1>
-        <p>Cada desafio é um passo rumo ao domínio da língua e da cultura hispânica.</p>
+        <h1>A fluência transforma o seu futuro</h1>
+        <p>Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.</p>
       </div>
     </div>
   );

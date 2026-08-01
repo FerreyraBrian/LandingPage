@@ -61,8 +61,8 @@ export default function GamesSection() {
     <section className={`${styles.section} reveal`}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>Tobogã de Emoções</h2>
-          <p>Desvende os enigmas e descubra a profundidade do seu conhecimento em espanhol.</p>
+          <h2>Desafio de Proficiência</h2>
+          <p>Teste seus conhecimentos e descubra seu nível de domínio do idioma espanhol.</p>
         </div>
 
         <div className={styles.gamesContainer} style={{ display: 'flex', flexDirection: 'column', gap: '30px', position: 'relative' }}>
@@ -70,10 +70,10 @@ export default function GamesSection() {
           {unlockedLevel === 0 && (
             <div className={styles.lockedOverlayAbsolute}>
               <div className={styles.lockedOverlayContent}>
-                <h3>Preparado para a Jornada?</h3>
-                <p style={{ marginBottom: '20px', color: 'var(--blue-sky)' }}>Registre-se para iniciar sua imersão cultural e linguística.</p>
+                <h3>Pronto para testar seu espanhol?</h3>
+                <p style={{ marginBottom: '20px', color: 'var(--blue-sky)' }}>Registre-se gratuitamente para ter acesso imediato ao nosso desafio interativo.</p>
                 <button className={styles.startBtn} onClick={handleStartClick}>
-                  COMEÇAR
+                  INICIAR DESAFIO
                 </button>
               </div>
             </div>
@@ -136,12 +136,12 @@ export default function GamesSection() {
           
           {unlockedLevel === 6 && (
             <div className={styles.finalSuccess}>
-              <h3 style={{ fontSize: '3rem' }}>¡Enhorabuena! 🎉🏆</h3>
+              <h3 style={{ fontSize: '3rem' }}>¡Enhorabuena! 🏆</h3>
               <p style={{ fontSize: '1.5rem', marginTop: '20px', color: 'var(--yellow-horizon)' }}>
-                Você concluiu com maestria todos os níveis do nosso Tobogã de Emoções. 
-                <br/>Sua jornada celestial com o idioma espanhol está apenas começando!
+                Você concluiu com excelência todos os níveis da nossa Avaliação de Proficiência. 
+                <br/>Sua jornada rumo à fluência definitiva no idioma espanhol começa agora.
               </p>
-              <p style={{ marginTop: '20px' }}>Nossa equipe de coordenação acadêmica entrará em contato em breve para guiar seus próximos passos.</p>
+              <p style={{ marginTop: '20px' }}>Nossa coordenação acadêmica entrará em contato em breve para apresentar a proposta ideal para o seu desenvolvimento.</p>
             </div>
           )}
         </div>
