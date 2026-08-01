@@ -1,27 +1,25 @@
 {
-    "name":  "landingpage",
-    "version":  "1.0.0",
-    "description":  "Uma landing page interativa com temática celestial projetada para a escola de idiomas \"Horizonte Espanhol\". \r O foco do projeto é converter leads através de uma experiência gamificada (Jogo da Forca).",
-    "main":  "index.js",
-    "scripts":  {
-                    "test":  "echo \"Error: no test specified\" \u0026\u0026 exit 1",
-                    "dev":  "vite"
-                },
-    "repository":  {
-                       "type":  "git",
-                       "url":  "git+https://github.com/horizonteespanhol/LandingPage.git"
-                   },
-    "keywords":  [
-
-                 ],
-    "author":  "",
-    "license":  "ISC",
-    "type":  "commonjs",
-    "bugs":  {
-                 "url":  "https://github.com/horizonteespanhol/LandingPage/issues"
-             },
-    "homepage":  "https://github.com/horizonteespanhol/LandingPage#readme",
-    "devDependencies":  {
-                            "vite":  "^8.2.0"
-                        }
+  "name": "horizonte-landing",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "oxlint": "^1.75.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  }
 }

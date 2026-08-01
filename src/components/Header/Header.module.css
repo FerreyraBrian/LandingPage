@@ -1,0 +1,71 @@
+﻿.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background: transparent;
+}
+
+.logoImage {
+  height: 60px;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+.logoFallback {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.he {
+  background: var(--white);
+  color: var(--blue-deep);
+  font-weight: 900;
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: var(--yellow-horizon);
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  color: var(--white);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+}
+
+.socialLink {
+  color: var(--white);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialLink:hover {
+  color: var(--yellow-horizon);
+  transform: scale(1.1);
+}

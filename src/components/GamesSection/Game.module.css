@@ -1,0 +1,88 @@
+.gameCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid var(--blue-sky);
+  text-align: center;
+  position: relative;
+}
+
+.gameCard.completed {
+  border-color: #4caf50;
+}
+
+.gameTitle {
+  color: var(--yellow-horizon);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.questionText {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.optionBtn {
+  background: rgba(1, 37, 97, 0.8);
+  border: 1px solid var(--blue-sky);
+  padding: 15px;
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.optionBtn:hover:not(:disabled) {
+  background: rgba(100, 181, 216, 0.3);
+  transform: translateY(-2px);
+}
+
+.optionBtn.correct {
+  background: #4caf50;
+  border-color: #4caf50;
+}
+
+.optionBtn.incorrect {
+  background: var(--red-energy);
+  border-color: var(--red-energy);
+  animation: shake 0.4s;
+}
+
+.optionBtn:disabled {
+  cursor: not-allowed;
+}
+
+.nextBtn {
+  background: var(--yellow-horizon);
+  color: var(--blue-deep);
+  padding: 10px 30px;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.nextBtn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+}

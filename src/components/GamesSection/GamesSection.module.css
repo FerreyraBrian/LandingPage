@@ -1,0 +1,207 @@
+﻿.section {
+  padding: 100px 20px;
+  background-color: var(--blue-deep);
+  position: relative;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.header h2 {
+  color: var(--yellow-horizon);
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: var(--blue-sky);
+  font-size: 1.2rem;
+}
+
+/* El contenedor principal de los juegos */
+.gamesContainer {
+  /* display, gap, y direction se manejan en estilo inline, pero añadimos padding base */
+  padding-top: 20px;
+}
+
+/* El peaje absoluto que bloquea todo al inicio */
+.lockedOverlayAbsolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(1, 37, 97, 0.4), rgba(1, 37, 97, 1) 40%);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 80px;
+  border-radius: 20px;
+}
+
+.lockedOverlayContent {
+  background: rgba(1, 37, 97, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px solid var(--yellow-horizon);
+  box-shadow: 0 0 40px rgba(255, 183, 0, 0.3);
+  text-align: center;
+  animation: slideUp 0.5s ease;
+}
+
+.lockedOverlayContent h3 {
+  color: var(--white);
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.startBtn {
+  background-color: var(--yellow-horizon);
+  color: var(--blue-deep);
+  padding: 15px 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 183, 0, 0.4);
+}
+
+.startBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 183, 0, 0.6);
+}
+
+/* Aspecto visual de los juegos difuminados */
+.gamePlaceholderCard {
+  height: 150px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  border: 1px dashed var(--blue-sky);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--blue-sky);
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.gameWrapper {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.finalSuccess {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 183, 0, 0.1);
+  border: 2px solid var(--yellow-horizon);
+  border-radius: 20px;
+  animation: slideUp 0.8s ease-out forwards;
+  z-index: 20;
+}
+
+.finalSuccess h3 {
+  color: var(--yellow-horizon);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.finalSuccess p {
+  color: var(--white);
+  font-size: 1.2rem;
+}
+
+/* Modal de registro */
+.modalOverlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(1, 37, 97, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modalContent {
+  background: var(--blue-deep);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid var(--blue-sky);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px; right: 20px;
+  background: transparent;
+  color: var(--white);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.modalContent h3 {
+  color: var(--yellow-horizon);
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.modalContent p {
+  color: var(--blue-sky);
+  margin-bottom: 25px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup input, .formGroup select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid var(--blue-sky);
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+}
+
+.formGroup input:focus, .formGroup select:focus {
+  outline: none;
+  border-color: var(--yellow-horizon);
+}
+
+.formGroup select option {
+  background: var(--blue-deep);
+}
+
+.submitModalBtn {
+  width: 100%;
+  background: var(--yellow-horizon);
+  color: var(--blue-deep);
+  padding: 15px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  transition: transform 0.2s;
+}
+
+.submitModalBtn:hover:not(:disabled) {
+  transform: scale(1.02);
+}

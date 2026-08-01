@@ -1,0 +1,38 @@
+.footer {
+  background-color: var(--blue-deep);
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(100, 181, 216, 0.2);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.socials {
+  display: flex;
+  gap: 30px;
+}
+
+.socialLink {
+  color: var(--blue-sky);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialLink:hover {
+  color: var(--yellow-horizon);
+  transform: translateY(-2px);
+}
+
+.copy {
+  color: var(--blue-sky);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
