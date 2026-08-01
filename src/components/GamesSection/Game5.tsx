@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import styles from './Game.module.css';
 import { playSound } from '../../utils/sound';
 

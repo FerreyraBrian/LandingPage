@@ -1,5 +1,4 @@
-﻿import React from 'react';
-import Header from './components/Header/Header';
+﻿import Header from './components/Header/Header';
 import CelestialCarousel from './components/CelestialCarousel/CelestialCarousel';
 import GamesSection from './components/GamesSection/GamesSection';
 import LeadForm from './components/LeadForm/LeadForm';
