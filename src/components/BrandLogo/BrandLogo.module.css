@@ -1,0 +1,311 @@
+.logoShell {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.noCircle {
+  background: transparent;
+}
+
+.circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 16px 50px rgba(3, 24, 54, 0.16);
+}
+
+.lightCircle {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.98), rgba(247, 244, 235, 0.98) 62%, rgba(231, 224, 206, 0.92) 100%);
+}
+
+.brandCircle {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(14, 37, 78, 0.95) 45%, rgba(7, 24, 51, 1) 100%);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.logoContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noMonogram .wordmarkBlock {
+  margin-top: 0;
+}
+
+.textOnly {
+  aspect-ratio: auto;
+}
+
+.textOnly .logoContent {
+  width: auto;
+  height: auto;
+}
+
+.monogram {
+  position: relative;
+  width: 76%;
+  height: 48%;
+  font-family: var(--font-brand-serif);
+  color: var(--brand-navy);
+  line-height: 0.8;
+}
+
+.letter {
+  position: absolute;
+  font-weight: 600;
+}
+
+.letterHLeft {
+  left: 8%;
+  top: -4%;
+}
+
+.letterHRight {
+  left: 36%;
+  top: -5%;
+}
+
+.letterE {
+  right: 2%;
+  top: 27%;
+}
+
+.wordmarkBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+  margin-top: 2%;
+}
+
+.wordmark {
+  font-family: var(--font-brand-script);
+  font-weight: 400;
+  color: var(--brand-gold);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tagline {
+  font-family: var(--font-brand-sans);
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  color: var(--brand-ink);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.brandCircle + .logoContent .wordmark {
+  color: #efd47c;
+}
+
+.brandCircle + .logoContent .tagline {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.brandCircle + .logoContent .monogram {
+  color: #f5f7fb;
+}
+
+.header {
+  width: clamp(150px, 18vw, 190px);
+  aspect-ratio: 1;
+}
+
+.header .letter {
+  font-size: clamp(4.8rem, 5.8vw, 5.8rem);
+}
+
+.header .wordmark {
+  font-size: clamp(1.35rem, 1.75vw, 1.7rem);
+}
+
+.header .tagline {
+  font-size: clamp(0.46rem, 0.65vw, 0.62rem);
+}
+
+.hero {
+  width: min(62vw, 430px);
+  min-width: 260px;
+  aspect-ratio: 1;
+}
+
+.hero.noCircle {
+  width: min(76vw, 560px);
+  min-width: 280px;
+  aspect-ratio: 1.05;
+}
+
+.hero.noCircle.textOnly {
+  width: min(90vw, 700px);
+  min-width: 300px;
+  aspect-ratio: auto;
+}
+
+.hero.noCircle .logoContent {
+  justify-content: flex-start;
+}
+
+.hero.noCircle .logoContent.noMonogram {
+  justify-content: center;
+  height: auto;
+}
+
+.hero.noCircle .monogram {
+  width: 72%;
+  height: 58%;
+}
+
+.hero.noCircle .wordmarkBlock {
+  margin-top: -4%;
+}
+
+.hero.noCircle .logoContent.noMonogram .wordmarkBlock {
+  margin-top: 0;
+  gap: 0.18em;
+}
+
+.hero.noCircle .logoContent.noMonogram .wordmark {
+  font-size: clamp(2.1rem, 3.3vw, 3rem);
+  color: #f0cf6b;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.hero.noCircle .logoContent.noMonogram .tagline {
+  font-size: clamp(0.62rem, 0.95vw, 0.9rem);
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
+}
+
+.hero .letter {
+  font-size: clamp(8.5rem, 12vw, 12rem);
+}
+
+.hero .wordmark {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+}
+
+.hero .tagline {
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
+}
+
+.footer {
+  width: clamp(200px, 24vw, 250px);
+  aspect-ratio: 1;
+}
+
+.footer .letter {
+  font-size: clamp(6rem, 7.8vw, 7.6rem);
+}
+
+.footer .wordmark {
+  font-size: clamp(1.7rem, 2.25vw, 2.2rem);
+}
+
+.footer .tagline {
+  font-size: clamp(0.55rem, 0.78vw, 0.72rem);
+}
+
+@media (max-width: 900px) {
+  .header {
+    width: 138px;
+  }
+
+  .header .tagline {
+    letter-spacing: 0.25em;
+  }
+
+  .hero {
+    width: min(72vw, 360px);
+  }
+
+  .hero.noCircle {
+    width: min(82vw, 460px);
+  }
+
+  .hero.noCircle.textOnly {
+    width: min(92vw, 620px);
+    min-width: 260px;
+  }
+
+  .hero.noCircle .logoContent.noMonogram .wordmark {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+  }
+
+  .hero.noCircle .logoContent.noMonogram .tagline {
+    font-size: clamp(0.55rem, 0.95vw, 0.76rem);
+    letter-spacing: 0.25em;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    width: 116px;
+  }
+
+  .header .letter {
+    font-size: 3.8rem;
+  }
+
+  .header .wordmark {
+    font-size: 1.05rem;
+  }
+
+  .header .tagline {
+    font-size: 0.38rem;
+    letter-spacing: 0.2em;
+  }
+
+  .hero {
+    width: min(78vw, 310px);
+    min-width: 220px;
+  }
+
+  .hero.noCircle {
+    width: min(88vw, 340px);
+    min-width: 220px;
+  }
+
+  .hero.noCircle.textOnly {
+    width: min(94vw, 380px);
+    min-width: 220px;
+  }
+
+  .hero.noCircle .logoContent.noMonogram .wordmark {
+    font-size: clamp(1.45rem, 7vw, 1.95rem);
+  }
+
+  .hero.noCircle .logoContent.noMonogram .tagline {
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  .hero .letter {
+    font-size: clamp(6.2rem, 17vw, 8rem);
+  }
+
+  .hero .wordmark {
+    font-size: clamp(1.55rem, 6vw, 2rem);
+  }
+
+  .hero .tagline {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+  }
+
+  .footer {
+    width: min(62vw, 220px);
+  }
+}

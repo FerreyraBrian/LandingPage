@@ -1,6 +1,6 @@
 .carouselContainer {
   position: relative;
-  height: 600px;
+  height: 760px;
   width: 100%;
   overflow: hidden;
   background-color: var(--blue-deep);
@@ -14,7 +14,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(1, 37, 97, 0.4), rgba(1, 37, 97, 0.9));
+  background: linear-gradient(to bottom, rgba(1, 37, 97, 0.24), rgba(1, 37, 97, 0.72));
   z-index: 10;
   pointer-events: none;
 }
@@ -23,6 +23,21 @@
   display: flex;
   width: max-content;
   will-change: transform;
+  transform: translateX(var(--track-offset, 0px));
+}
+
+.heroTopBrand {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: min(92vw, 760px);
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: linear-gradient(to bottom, rgba(1, 37, 97, 0.18), rgba(1, 37, 97, 0.06));
+  backdrop-filter: blur(1px);
+  pointer-events: none;
 }
 
 .slide {
@@ -49,23 +64,51 @@
 
 .heroText {
   position: absolute;
-  bottom: 80px;
+  bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
   z-index: 20;
   width: 100%;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.heroCopy {
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .heroText h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   color: var(--white);
   text-shadow: 0 0 20px rgba(100, 181, 216, 0.8);
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 .heroText p {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   color: var(--blue-sky);
+}
+
+@media (max-width: 640px) {
+  .carouselContainer {
+    height: 790px;
+  }
+
+  .heroTopBrand {
+    top: 52px;
+    width: min(94vw, 420px);
+    padding: 6px 8px;
+  }
+
+  .heroText {
+    bottom: 6px;
+    gap: 14px;
+  }
 }

@@ -1,14 +1,28 @@
 import { useEffect, useRef } from 'react';
+import BrandLogo from '../BrandLogo/BrandLogo';
 import styles from './CelestialCarousel.module.css';
 
 const IMAGES = Array.from({ length: 10 }, (_, i) => `/images/imagen-${i + 1}.png`);
 
 export default function CelestialCarousel() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let animationFrameId: number;
     let position = 0;
+
+    // Clear any stale inline transforms from previous hot-reload states.
+    if (containerRef.current) {
+      const topBrandEl = containerRef.current.querySelector(`.${styles.heroTopBrand}`) as HTMLDivElement | null;
+      if (topBrandEl) {
+        topBrandEl.style.transform = '';
+      }
+    }
+
+    if (trackRef.current) {
+      trackRef.current.style.transform = '';
+    }
 
     const animate = () => {
       if (trackRef.current) {
@@ -17,7 +31,9 @@ export default function CelestialCarousel() {
         if (position <= -(trackRef.current.scrollWidth / 2)) {
           position = 0;
         }
-        trackRef.current.style.transform = `translateX(${position}px)`;
+        if (containerRef.current) {
+          containerRef.current.style.setProperty('--track-offset', `${position}px`);
+        }
       }
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -28,8 +44,11 @@ export default function CelestialCarousel() {
   }, []);
 
   return (
-    <div className={styles.carouselContainer}>
+    <div className={styles.carouselContainer} ref={containerRef}>
       <div className={styles.overlay}></div>
+      <div className={styles.heroTopBrand}>
+        <BrandLogo size="hero" showCircle={false} showMonogram={false} />
+      </div>
       <div className={styles.track} ref={trackRef}>
         {/* Duplicate the array to create an infinite scroll illusion */}
         {[...IMAGES, ...IMAGES].map((src, idx) => (
@@ -42,8 +61,10 @@ export default function CelestialCarousel() {
       </div>
       
       <div className={styles.heroText}>
-        <h1>A fluência transforma o seu futuro</h1>
-        <p>Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.</p>
+        <div className={styles.heroCopy}>
+          <h1>A fluência transforma o seu futuro</h1>
+          <p>Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.</p>
+        </div>
       </div>
     </div>
   );

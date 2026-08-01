@@ -4,20 +4,8 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        {/* El logo apunta al archivo que el cliente subirá luego */}
-        <img src="/images/logo-horizonte.png" alt="Horizonte Espanhol" className={styles.logoImage} onError={(e) => {
-          // Fallback visual por si la imagen aún no existe
-          e.currentTarget.style.display = 'none';
-          if (e.currentTarget.nextElementSibling) {
-            (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
-          }
-        }} />
-        <div className={styles.logoFallback} style={{ display: 'none' }}>
-          <span className={styles.he}>HE</span>
-          <div className={styles.logoText}>
-            <span className={styles.title}>Horizonte Espanhol</span>
-            <span className={styles.subtitle}>IDIOMA & CULTURA</span>
-          </div>
+        <div className={styles.logoCircle}>
+          <img src="/images/logo-horizonte.png" alt="Horizonte Espanhol" className={styles.logoImage} />
         </div>
       </div>
       <div className={styles.socials}>

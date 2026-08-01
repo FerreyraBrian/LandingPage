@@ -1,5 +1,5 @@
 .section {
-  padding: 100px 20px;
+  padding: 8px 20px 74px;
   background-color: var(--blue-deep);
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
-  padding: 50px;
+  padding: 40px;
   border: 1px solid var(--blue-sky);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   display: flex;
@@ -20,13 +20,13 @@
 
 .content {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 26px;
 }
 
 .content h2 {
   color: var(--yellow-horizon);
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: clamp(2rem, 3.8vw, 2.4rem);
+  margin-bottom: 8px;
 }
 
 .content p {
@@ -39,7 +39,7 @@
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
 .formGroup input,
@@ -64,7 +64,7 @@
 .submitBtn {
   background-color: var(--yellow-horizon);
   color: var(--blue-deep);
-  padding: 15px 30px;
+  padding: 13px 28px;
   font-size: 1.2rem;
   font-weight: bold;
   border-radius: 50px;
@@ -83,11 +83,19 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 6px 16px 54px;
+  }
+
   .container {
-    padding: 30px 20px;
+    padding: 28px 18px;
   }
   
   .content h2 {
-    font-size: 2rem;
+    font-size: 1.9rem;
+  }
+
+  .content {
+    margin-bottom: 20px;
   }
 }

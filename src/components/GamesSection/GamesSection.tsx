@@ -1,4 +1,5 @@
 ﻿import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import styles from './GamesSection.module.css';
 import Game1 from './Game1';
 import Game2 from './Game2';
@@ -8,6 +9,20 @@ import Game5 from './Game5';
 import RegistrationModal from './RegistrationModal';
 import { fireConfetti } from '../../utils/confetti';
 import { playSound } from '../../utils/sound';
+
+type GameMeta = {
+  level: number;
+  title: string;
+  subtitle: string;
+};
+
+const GAMES: GameMeta[] = [
+  { level: 1, title: 'Quiz de Vocabulário', subtitle: 'Fortaleça sua base lexical com precisão.' },
+  { level: 2, title: 'Verdadeiro ou Falso', subtitle: 'Treine leitura e interpretação com agilidade.' },
+  { level: 3, title: 'Completar a Frase', subtitle: 'Aprimore estrutura e contexto em espanhol.' },
+  { level: 4, title: 'Ordenar as Palavras', subtitle: 'Domine sintaxe e construção natural.' },
+  { level: 5, title: 'O Grande Desafio Final', subtitle: 'Integre tudo em uma prova de fluência.' },
+];
 
 export default function GamesSection() {
   const [unlockedLevel, setUnlockedLevel] = useState(0); // 0 = locked, 1 = game 1, etc.
@@ -32,32 +47,23 @@ export default function GamesSection() {
     }, 1500);
   };
 
-  const getGameStyle = (levelIndex: number) => {
-    if (unlockedLevel > levelIndex) {
-      return {
-        opacity: 0.8,
-        transform: 'translateY(-10px)',
-        pointerEvents: 'none' as const,
-        filter: 'grayscale(50%)',
-        boxShadow: '0 15px 30px rgba(0,0,0,0.4)'
-      };
+  const renderGame = (level: number) => {
+    if (level === 1) {
+      return <Game1 onComplete={() => handleLevelComplete(2)} isCompleted={false} />;
     }
-    if (unlockedLevel === levelIndex) {
-      return {
-        opacity: 1,
-        transform: 'translateY(-25px) scale(1.02)',
-        boxShadow: '0 20px 40px rgba(255, 183, 0, 0.5)',
-        zIndex: 10
-      };
+    if (level === 2) {
+      return <Game2 onComplete={() => handleLevelComplete(3)} isCompleted={false} />;
     }
-    return {
-      opacity: 0.6,
-      transform: 'translateY(0)',
-      pointerEvents: 'none' as const,
-      filter: 'blur(2px)',
-      boxShadow: '0 10px 20px rgba(0,0,0,0.3)'
-    };
+    if (level === 3) {
+      return <Game3 onComplete={() => handleLevelComplete(4)} isCompleted={false} />;
+    }
+    if (level === 4) {
+      return <Game4 onComplete={() => handleLevelComplete(5)} isCompleted={false} />;
+    }
+    return <Game5 onComplete={() => handleLevelComplete(6)} isCompleted={false} />;
   };
+
+  const progressLevel = unlockedLevel === 0 ? 1 : Math.min(unlockedLevel, 5);
 
   return (
     <section className={`${styles.section} reveal`}>
@@ -68,74 +74,76 @@ export default function GamesSection() {
         </div>
 
         <div className={styles.gamesContainer}>
-          
-          {unlockedLevel === 0 && (
-            <div className={styles.lockedOverlayAbsolute}>
-              <div className={styles.lockedOverlayContent}>
-                <h3>Pronto para testar seu espanhol?</h3>
-                <p style={{ marginBottom: '20px', color: 'var(--blue-sky)' }}>Registre-se gratuitamente para ter acesso imediato ao nosso desafio interativo.</p>
-                <button className={styles.startBtn} onClick={handleStartClick}>
-                  INICIAR DESAFIO
-                </button>
-              </div>
+          {unlockedLevel < 6 && (
+            <div className={styles.deckStack}>
+              {GAMES.map((game) => {
+                const isCompleted = unlockedLevel > game.level;
+                const isCurrent = game.level === progressLevel;
+                const isLocked = game.level > progressLevel;
+                const isNext = isLocked && game.level === progressLevel + 1;
+                const showStartForFirst = unlockedLevel === 0 && game.level === 1;
+              const cardClass = [
+                styles.levelCard,
+                isCurrent ? styles.currentCard : '',
+                isCompleted ? styles.completedCard : '',
+                isNext ? styles.nextCard : '',
+                isLocked ? styles.lockedCard : '',
+              ]
+                .filter(Boolean)
+                .join(' ');
+
+              return (
+                <article
+                  key={game.level}
+                  className={cardClass}
+                  style={{ '--card-index': game.level } as CSSProperties}
+                >
+                  <div className={styles.cardTopLine}>
+                    <span className={styles.levelPill}>Nível {game.level}</span>
+                    <span className={styles.cardStatus}>
+                      {isCompleted
+                        ? 'Concluído'
+                        : showStartForFirst
+                          ? 'Pronto para iniciar'
+                          : isCurrent
+                            ? 'Em jogo'
+                            : isNext
+                              ? 'Próxima recompensa'
+                              : 'Aguardando desbloqueio'}
+                    </span>
+                  </div>
+
+                  <h3>{game.title}</h3>
+                  <p>{game.subtitle}</p>
+
+                  {isCurrent && unlockedLevel > 0 && (
+                    <div className={styles.activeGameShell}>{renderGame(game.level)}</div>
+                  )}
+
+                  {showStartForFirst && (
+                    <div className={styles.lockedCardContent}>
+                      <p>
+                        Registre-se gratuitamente para liberar a primeira seção e iniciar o seu desafio interativo.
+                      </p>
+                      <button className={styles.startBtn} onClick={handleStartClick}>
+                        INICIAR DESAFIO
+                      </button>
+                    </div>
+                  )}
+
+                  {isLocked && !showStartForFirst && (
+                    <div className={styles.lockHint}>
+                      {isNext
+                        ? 'Conclua a carta atual para revelar esta próxima etapa.'
+                        : 'Esta etapa permanece em sombra até seu avanço contínuo.'}
+                    </div>
+                  )}
+                </article>
+              );
+              })}
             </div>
           )}
 
-          <div className={styles.gameWrapper} style={{ ...getGameStyle(1), transition: 'all 0.6s ease' }}>
-            {unlockedLevel >= 1 ? (
-               <Game1 onComplete={() => handleLevelComplete(2)} isCompleted={unlockedLevel > 1} />
-            ) : (
-               <div className={styles.gamePlaceholderCard}>
-                 <h3 style={{color: 'var(--white)', fontSize: '2rem'}}>Nível 1</h3>
-                 <p>Quiz de Vocabulário</p>
-               </div>
-            )}
-          </div>
-
-          <div className={styles.gameWrapper} style={{ ...getGameStyle(2), transition: 'all 0.6s ease' }}>
-             {unlockedLevel >= 2 ? (
-               <Game2 onComplete={() => handleLevelComplete(3)} isCompleted={unlockedLevel > 2} />
-            ) : (
-               <div className={styles.gamePlaceholderCard}>
-                 <h3 style={{color: 'var(--white)', fontSize: '2rem'}}>Nível 2</h3>
-                 <p>Verdadeiro ou Falso</p>
-               </div>
-            )}
-          </div>
-
-          <div className={styles.gameWrapper} style={{ ...getGameStyle(3), transition: 'all 0.6s ease' }}>
-             {unlockedLevel >= 3 ? (
-               <Game3 onComplete={() => handleLevelComplete(4)} isCompleted={unlockedLevel > 3} />
-            ) : (
-               <div className={styles.gamePlaceholderCard}>
-                 <h3 style={{color: 'var(--white)', fontSize: '2rem'}}>Nível 3</h3>
-                 <p>Completar a Frase</p>
-               </div>
-            )}
-          </div>
-
-          <div className={styles.gameWrapper} style={{ ...getGameStyle(4), transition: 'all 0.6s ease' }}>
-             {unlockedLevel >= 4 ? (
-               <Game4 onComplete={() => handleLevelComplete(5)} isCompleted={unlockedLevel > 4} />
-            ) : (
-               <div className={styles.gamePlaceholderCard}>
-                 <h3 style={{color: 'var(--white)', fontSize: '2rem'}}>Nível 4</h3>
-                 <p>Ordenar as Palavras</p>
-               </div>
-            )}
-          </div>
-
-          <div className={styles.gameWrapper} style={{ ...getGameStyle(5), transition: 'all 0.6s ease' }}>
-             {unlockedLevel >= 5 ? (
-               <Game5 onComplete={() => handleLevelComplete(6)} isCompleted={unlockedLevel > 5} />
-            ) : (
-               <div className={styles.gamePlaceholderCard}>
-                 <h3 style={{color: 'var(--yellow-horizon)', fontSize: '2rem'}}>Nível 5 🌟</h3>
-                 <p>O Grande Desafio Final</p>
-               </div>
-            )}
-          </div>
-          
           {unlockedLevel === 6 && (
             <div className={styles.finalSuccess}>
               <h3 style={{ fontSize: '3rem' }}>¡Enhorabuena! 🏆</h3>

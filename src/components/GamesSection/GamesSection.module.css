@@ -1,7 +1,19 @@
-﻿.section {
-  padding: 100px 20px;
+.section {
+  padding: 88px 20px 0;
   background-color: var(--blue-deep);
   position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58px;
+  transform: translateY(-58px);
+  background: linear-gradient(to bottom, rgba(1, 37, 97, 0), rgba(1, 37, 97, 0.74));
+  pointer-events: none;
 }
 
 .container {
@@ -11,12 +23,12 @@
 
 .header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 34px;
 }
 
 .header h2 {
   color: var(--yellow-horizon);
-  font-size: 3rem;
+  font-size: clamp(2.2rem, 4.2vw, 2.8rem);
   margin-bottom: 10px;
 }
 
@@ -27,85 +39,162 @@
 
 .gamesContainer {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
-  gap: 30px;
   position: relative;
-  padding: 40px 0;
-  min-height: 400px;
+  padding: 10px 0 0;
+  min-height: 706px;
 }
 
-.gameWrapper {
-  flex: 1 1 300px;
-  max-width: 350px;
-  animation: fadeIn 0.8s ease-out forwards;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
+.deckStack {
+  width: min(100%, 920px);
+  display: grid;
+  align-items: start;
+  perspective: 1400px;
 }
 
-.gameWrapper > * {
-  flex-grow: 1;
+.levelCard {
+  --card-index: 1;
+  grid-area: 1 / 1;
+  position: relative;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid rgba(100, 181, 216, 0.36);
+  background:
+    linear-gradient(145deg, rgba(4, 53, 123, 0.92), rgba(1, 37, 97, 0.88)),
+    radial-gradient(circle at 90% 8%, rgba(255, 183, 0, 0.14), transparent 40%);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.36);
+  transition: transform 0.45s ease, box-shadow 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
+  transform-origin: top center;
+  transform:
+    translateY(calc((var(--card-index) - 1) * 108px))
+    rotate(calc((var(--card-index) - 1) * -1.35deg));
+  z-index: calc(40 - var(--card-index));
 }
 
-.gamePlaceholderCard {
-  height: 100%;
-  min-height: 250px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  border: 1px dashed var(--blue-sky);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: var(--blue-sky);
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.lockedOverlayAbsolute {
+.levelCard::after {
+  content: '';
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: calc(100% + 40px);
-  height: calc(100% + 40px);
-  background: rgba(1, 37, 97, 0.4);
-  backdrop-filter: blur(6px);
-  z-index: 50;
+  inset: 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.cardTopLine {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 20px;
+  gap: 14px;
+  margin-bottom: 12px;
 }
 
-.lockedOverlayContent {
-  background: rgba(1, 37, 97, 0.95);
-  padding: 40px;
-  border-radius: 20px;
-  border: 2px solid var(--yellow-horizon);
-  box-shadow: 0 10px 40px rgba(255, 183, 0, 0.4);
-  text-align: center;
-  animation: slideUp 0.5s ease;
-  max-width: 500px;
+.levelPill {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 7px 14px;
+  border: 1px solid rgba(255, 183, 0, 0.6);
+  color: var(--yellow-horizon);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.lockedOverlayContent h3 {
+.cardStatus {
+  font-size: 0.78rem;
+  color: rgba(176, 217, 247, 0.78);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.levelCard h3 {
   color: var(--white);
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 8px;
+}
+
+.levelCard p {
+  color: var(--blue-sky);
+  margin-bottom: 18px;
+}
+
+.currentCard {
+  z-index: 60;
+  transform:
+    translateY(calc(((var(--card-index) - 1) * 108px) - 14px))
+    rotate(-0.6deg)
+    scale(1.01);
+  border-color: rgba(255, 183, 0, 0.58);
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.44);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.completedCard {
+  z-index: 50;
+  opacity: 0.62;
+  filter: saturate(0.82) blur(0.1px);
+  pointer-events: none;
+}
+
+.nextCard {
+  z-index: 45;
+  opacity: 0.78;
+  filter: saturate(0.9);
+  pointer-events: none;
+}
+
+.lockedCard {
+  background:
+    linear-gradient(145deg, rgba(3, 44, 104, 0.84), rgba(1, 37, 97, 0.82)),
+    radial-gradient(circle at 80% 10%, rgba(100, 181, 216, 0.12), transparent 45%);
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.38);
+  opacity: 0.56;
+  filter: blur(0.2px) saturate(0.74);
+  pointer-events: none;
+}
+
+.activeGameShell {
+  border-radius: 18px;
+  border: 1px solid rgba(100, 181, 216, 0.38);
+  background: rgba(1, 37, 97, 0.36);
+  backdrop-filter: blur(1px);
+  padding: 18px;
+}
+
+.lockedCardContent {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  flex: 1;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 183, 0, 0.3);
+  background: linear-gradient(145deg, rgba(1, 37, 97, 0.35), rgba(1, 37, 97, 0.6));
+  padding: 24px;
+}
+
+.lockedCardContent p {
+  max-width: 620px;
+  margin-bottom: 0;
+}
+
+.lockHint {
+  margin-top: 6px;
+  border-radius: 12px;
+  border: 1px dashed rgba(100, 181, 216, 0.48);
+  background: rgba(1, 37, 97, 0.3);
+  color: rgba(198, 228, 255, 0.86);
+  padding: 12px 14px;
+  font-size: 0.92rem;
 }
 
 .startBtn {
   background-color: var(--yellow-horizon);
   color: var(--blue-deep);
-  padding: 15px 50px;
+  padding: 13px 42px;
   font-size: 1.5rem;
   font-weight: bold;
   border-radius: 50px;
@@ -119,9 +208,9 @@
 }
 
 .finalSuccess {
-  width: 100%;
+  width: min(100%, 920px);
   text-align: center;
-  padding: 40px;
+  padding: 30px;
   background: rgba(255, 183, 0, 0.1);
   border: 2px solid var(--yellow-horizon);
   border-radius: 20px;
@@ -142,7 +231,10 @@
 
 .modalOverlay {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(1, 37, 97, 0.8);
   backdrop-filter: blur(8px);
   z-index: 1000;
@@ -157,7 +249,7 @@
   padding: 40px;
   border-radius: 20px;
   border: 1px solid var(--blue-sky);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
   width: 90%;
   max-width: 500px;
   position: relative;
@@ -166,7 +258,8 @@
 
 .closeBtn {
   position: absolute;
-  top: 15px; right: 20px;
+  top: 15px;
+  right: 20px;
   background: transparent;
   color: var(--white);
   font-size: 2rem;
@@ -188,18 +281,22 @@
   margin-bottom: 15px;
 }
 
-.formGroup input, .formGroup select, .formGroup textarea {
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
   width: 100%;
   padding: 12px 15px;
   border-radius: 10px;
   border: 1px solid var(--blue-sky);
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--white);
   font-family: inherit;
   resize: vertical;
 }
 
-.formGroup input:focus, .formGroup select:focus, .formGroup textarea:focus {
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
   outline: none;
   border-color: var(--yellow-horizon);
 }
@@ -223,4 +320,109 @@
 
 .submitModalBtn:hover:not(:disabled) {
   transform: scale(1.02);
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 74px 18px 0;
+  }
+
+  .section::before {
+    height: 48px;
+    transform: translateY(-48px);
+  }
+
+  .gamesContainer {
+    min-height: 626px;
+    padding: 8px 0 0;
+  }
+
+  .header {
+    margin-bottom: 26px;
+  }
+
+  .levelCard {
+    padding: 20px;
+    transform:
+      translateY(calc((var(--card-index) - 1) * 96px))
+      rotate(calc((var(--card-index) - 1) * -1.2deg));
+  }
+
+  .currentCard {
+    transform:
+      translateY(calc(((var(--card-index) - 1) * 96px) - 10px))
+      rotate(-0.5deg)
+      scale(1.01);
+  }
+
+  .startBtn {
+    font-size: 1.2rem;
+    padding: 12px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 62px 14px 0;
+  }
+
+  .section::before {
+    height: 40px;
+    transform: translateY(-40px);
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .header h2 {
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  .gamesContainer {
+    min-height: 526px;
+    padding: 6px 0 0;
+  }
+
+  .deckStack {
+    width: 100%;
+  }
+
+  .levelCard {
+    border-radius: 20px;
+    padding: 16px;
+    transform:
+      translateY(calc((var(--card-index) - 1) * 76px))
+      rotate(calc((var(--card-index) - 1) * -1deg));
+  }
+
+  .currentCard {
+    transform:
+      translateY(calc(((var(--card-index) - 1) * 76px) - 8px))
+      rotate(-0.35deg)
+      scale(1.005);
+  }
+
+  .levelCard h3 {
+    font-size: 1.35rem;
+  }
+
+  .cardTopLine {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .activeGameShell {
+    padding: 12px;
+  }
+
+  .lockHint {
+    font-size: 0.86rem;
+    padding: 10px 12px;
+  }
 }

@@ -1,6 +1,13 @@
-﻿@import './animations.css';
+﻿@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@500;600;700&display=swap');
+@import './animations.css';
 
 :root {
+  --brand-navy: #1a3a52;
+  --brand-gold: #d4af37;
+  --brand-ink: #000000;
+  --font-brand-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-brand-script: 'Allura', 'Brush Script MT', cursive;
+  --font-brand-sans: 'Montserrat', 'Segoe UI', sans-serif;
   --blue-deep: #012561;
   --blue-sky: #64b5d8;
   --yellow-horizon: #ffb700;
@@ -19,7 +26,7 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-brand-sans);
   overflow-x: hidden;
 }
 
