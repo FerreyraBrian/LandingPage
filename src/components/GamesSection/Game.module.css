@@ -1,8 +1,8 @@
 .gameCard {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface-color);
   border-radius: 20px;
   padding: 40px;
-  border: 1px solid var(--blue-sky);
+  border: 1px solid var(--card-border);
   text-align: center;
   position: relative;
 }
@@ -30,17 +30,17 @@
 }
 
 .optionBtn {
-  background: rgba(1, 37, 97, 0.8);
-  border: 1px solid var(--blue-sky);
+  background: var(--surface-strong);
+  border: 1px solid var(--card-border);
   padding: 15px;
   border-radius: 10px;
-  color: var(--white);
+  color: var(--text-color);
   font-size: 1.1rem;
   transition: all 0.2s ease;
 }
 
 .optionBtn:hover:not(:disabled) {
-  background: rgba(100, 181, 216, 0.3);
+  background: var(--accent-soft);
   transform: translateY(-2px);
 }
 
@@ -60,8 +60,8 @@
 }
 
 .nextBtn {
-  background: var(--yellow-horizon);
-  color: var(--blue-deep);
+  background: var(--button-accent-bg);
+  color: var(--button-accent-text);
   padding: 10px 30px;
   font-weight: bold;
   border-radius: 50px;

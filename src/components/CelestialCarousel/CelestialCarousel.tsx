@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import BrandLogo from '../BrandLogo/BrandLogo';
 import styles from './CelestialCarousel.module.css';
 
 const IMAGES = Array.from({ length: 10 }, (_, i) => `/images/imagen-${i + 1}.png`);
@@ -46,9 +45,6 @@ export default function CelestialCarousel() {
   return (
     <div className={styles.carouselContainer} ref={containerRef}>
       <div className={styles.overlay}></div>
-      <div className={styles.heroTopBrand}>
-        <BrandLogo size="hero" showCircle={false} showMonogram={false} />
-      </div>
       <div className={styles.track} ref={trackRef}>
         {/* Duplicate the array to create an infinite scroll illusion */}
         {[...IMAGES, ...IMAGES].map((src, idx) => (

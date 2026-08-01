@@ -1,18 +1,29 @@
 .section {
   padding: 8px 20px 74px;
-  background-color: var(--blue-deep);
+  background-color: var(--bg-color);
   display: flex;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.08) 100%);
+  pointer-events: none;
+  opacity: 0.7;
 }
 
 .container {
   max-width: 800px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface-color);
   border-radius: 20px;
   padding: 40px;
-  border: 1px solid var(--blue-sky);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 30px var(--card-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +41,7 @@
 }
 
 .content p {
-  color: var(--blue-sky);
+  color: var(--text-muted);
   font-size: 1.1rem;
 }
 
@@ -47,9 +58,9 @@
   width: 100%;
   padding: 15px 20px;
   border-radius: 10px;
-  border: 1px solid var(--blue-sky);
-  background: rgba(1, 37, 97, 0.5);
-  color: var(--white);
+  border: 1px solid var(--card-border);
+  background: var(--input-bg);
+  color: var(--text-color);
   font-size: 1rem;
   transition: all 0.3s ease;
 }
@@ -62,8 +73,8 @@
 }
 
 .submitBtn {
-  background-color: var(--yellow-horizon);
-  color: var(--blue-deep);
+  background-color: var(--button-accent-bg);
+  color: var(--button-accent-text);
   padding: 13px 28px;
   font-size: 1.2rem;
   font-weight: bold;
@@ -74,7 +85,8 @@
 
 .submitBtn:hover:not(:disabled) {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 5px 15px rgba(255, 183, 0, 0.5);
+  background-color: var(--button-accent-hover);
+  box-shadow: 0 5px 15px rgba(255, 77, 59, 0.28);
 }
 
 .submitBtn:disabled {

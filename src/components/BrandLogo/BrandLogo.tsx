@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styles from './BrandLogo.module.css';
 
 type BrandLogoSize = 'header' | 'hero' | 'footer';
@@ -16,24 +17,34 @@ export default function BrandLogo({
   showCircle = true,
   showMonogram = true,
 }: BrandLogoProps) {
+  const [isVisible, setIsVisible] = useState(false);
   const circleClass = tone === 'brand' ? styles.brandCircle : styles.lightCircle;
   const textOnlyClass = showMonogram ? '' : styles.textOnly;
+  const isHeroTextBrand = size === 'hero' && !showCircle;
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsVisible(true), 120);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   return (
-    <div className={`${styles.logoShell} ${styles[size]} ${showCircle ? '' : styles.noCircle} ${textOnlyClass}`}>
+    <div className={`${styles.logoShell} ${styles[size]} ${showCircle ? '' : styles.noCircle} ${textOnlyClass} ${isVisible ? styles.visible : styles.hidden}`}>
       {showCircle ? <div className={`${styles.circle} ${circleClass}`} aria-hidden="true" /> : null}
       <div className={`${styles.logoContent} ${showMonogram ? '' : styles.noMonogram}`}>
-        {showMonogram ? (
-          <div className={styles.monogram} aria-hidden="true">
-            <span className={`${styles.letter} ${styles.letterHLeft}`}>H</span>
-            <span className={`${styles.letter} ${styles.letterHRight}`}>H</span>
-            <span className={`${styles.letter} ${styles.letterE}`}>E</span>
+        {isHeroTextBrand ? (
+          <div className={styles.heroTextBrand} aria-label="Horizonte Espanhol Idioma & Cultura">
+            <div className={styles.heroBrandText}>
+              <span className={styles.heroBrandTitle}>Horizonte Espanhol</span>
+              <span className={styles.heroBrandSubtitle}>Idioma & Cultura</span>
+            </div>
           </div>
-        ) : null}
-        <div className={styles.wordmarkBlock}>
-          <span className={styles.wordmark}>Horizonte Espanhol</span>
-          <span className={styles.tagline}>IDIOMA & CULTURA</span>
-        </div>
+        ) : (
+          <img
+            className={styles.brandmarkImage}
+            src="/images/horizonte-espanhol-logo.svg"
+            alt="Horizonte Espanhol"
+          />
+        )}
       </div>
     </div>
   );

@@ -1,8 +1,19 @@
 .footer {
-  background-color: var(--blue-deep);
+  background-color: var(--bg-color);
   padding: 30px 20px 24px;
   text-align: center;
-  border-top: 1px solid rgba(100, 181, 216, 0.2);
+  border-top: 1px solid var(--card-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.08) 100%);
+  pointer-events: none;
+  opacity: 0.65;
 }
 
 .content {
@@ -20,21 +31,21 @@
   align-items: center;
   gap: 2px;
   padding: 0 10px 2px;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  border-bottom: 1px solid var(--card-border);
 }
 
 .signatureTitle {
   font-family: var(--font-brand-script);
   font-size: clamp(1.65rem, 2.2vw, 2.15rem);
   line-height: 0.92;
-  color: #f0cf6b;
+  color: var(--hero-title-color);
 }
 
 .signatureSubtitle {
   font-family: var(--font-brand-sans);
   font-size: clamp(0.5rem, 0.68vw, 0.62rem);
   letter-spacing: 0.34em;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--hero-subtitle-color);
 }
 
 .socials {
@@ -49,7 +60,7 @@
 }
 
 .socialLink {
-  color: var(--blue-sky);
+  color: var(--text-muted);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -61,7 +72,7 @@
 }
 
 .copy {
-  color: var(--blue-sky);
+  color: var(--text-muted);
   font-size: 0.82rem;
   opacity: 0.74;
   margin-top: 2px;
