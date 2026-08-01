@@ -1,0 +1,540 @@
+/* ==========================================================================
+   VARIÁVEIS GLOBAIS E RESET
+   ========================================================================== */
+:root {
+    --bg-dark: #0a2540;
+    --gold: #d4af37;
+    --orange: #ff6b35;
+    --white: #ffffff;
+    --gray: #e0e0e0;
+    --shadow-ethereal: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.2);
+    
+    --font-heading: 'Montserrat', sans-serif;
+    --font-text: 'Nunito', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--bg-dark);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ==========================================================================
+   COMPONENTES GERAIS
+   ========================================================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    text-decoration: none;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+}
+
+.btn-cta:active {
+    transform: translateY(1px);
+}
+
+/* ==========================================================================
+   1. MARQUESINA CELESTIAL
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Overlay gradient for celestial look */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 37, 64, 0.4) 0%, rgba(10, 37, 64, 0.9) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 20px;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    margin-bottom: 40px;
+    color: var(--gray);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+    background-color: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
+
+/* ==========================================================================
+   2. JOGO DA FORCA
+   ========================================================================== */
+.jogo-section {
+    padding: 100px 0;
+    background-color: #08192a; /* Slightly darker than base */
+    position: relative;
+    box-shadow: var(--shadow-ethereal);
+    z-index: 10;
+}
+
+.jogo-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.jogo-section .subtitle {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--gray);
+}
+
+.jogo-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.forca-container {
+    flex: 1 1 300px;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.interacao-container {
+    flex: 2 1 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.palavra-display {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 10px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.2);
+    min-height: 60px;
+}
+
+/* Dicas / Flip Cards */
+.dicas-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    width: 100%;
+    justify-content: center;
+}
+
+.dica-card {
+    background-color: transparent;
+    width: 140px;
+    height: 100px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.dica-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.dica-card.flipped .dica-inner {
+    transform: rotateY(180deg);
+}
+
+.dica-frente, .dica-verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.dica-frente {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.05) 100%);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.dica-frente small {
+    font-family: var(--font-text);
+    font-weight: 400;
+    color: var(--white);
+    margin-top: 5px;
+}
+
+.dica-verso {
+    background: var(--gold);
+    color: var(--bg-dark);
+    transform: rotateY(180deg);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Teclado Virtual */
+.teclado-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.tecla {
+    width: 40px;
+    height: 45px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tecla:hover:not(:disabled) {
+    background: var(--gold);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
+}
+
+.tecla:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.5);
+    border-color: transparent;
+}
+
+.tecla.correta {
+    background: #4caf50;
+    color: white;
+    opacity: 1;
+    border-color: #4caf50;
+}
+
+.tecla.incorreta {
+    background: var(--orange);
+    color: white;
+    opacity: 0.5;
+    border-color: var(--orange);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 37, 64, 0.9);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: var(--bg-dark);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--gold);
+    box-shadow: var(--shadow-ethereal);
+    max-width: 90%;
+    width: 400px;
+}
+
+.modal-content h3 {
+    color: var(--gold);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   3. FORMULÁRIO DE CAPTURA
+   ========================================================================== */
+.formulario-section {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, #08192a, var(--bg-dark));
+}
+
+.form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--shadow-ethereal);
+}
+
+.form-wrapper h2 {
+    color: var(--gold);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.form-wrapper p {
+    color: var(--gray);
+    margin-bottom: 40px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--white);
+    font-family: var(--font-text);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.form-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mensagem-sucesso {
+    margin-top: 25px;
+    padding: 15px;
+    background: rgba(76, 175, 80, 0.1);
+    color: #4caf50;
+    border: 1px solid #4caf50;
+    border-radius: 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   4. FOOTER
+   ========================================================================== */
+footer {
+    background-color: #05121f;
+    padding: 40px 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.marca .gold-text {
+    color: var(--gold);
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    color: var(--gray);
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--gold);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES E MEDIA QUERIES
+   ========================================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .dicas-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .dica-card {
+        width: 100%;
+        max-width: 250px;
+        height: 60px;
+    }
+
+    .form-wrapper {
+        padding: 30px 20px;
+    }
+}
