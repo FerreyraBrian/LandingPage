@@ -5,7 +5,7 @@
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -25,36 +25,74 @@
   font-size: 1.2rem;
 }
 
-/* El contenedor principal de los juegos */
 .gamesContainer {
-  /* display, gap, y direction se manejan en estilo inline, pero añadimos padding base */
-  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  position: relative;
+  padding: 40px 0;
+  min-height: 400px;
 }
 
-/* El peaje absoluto que bloquea todo al inicio */
+.gameWrapper {
+  flex: 1 1 300px;
+  max-width: 350px;
+  animation: fadeIn 0.8s ease-out forwards;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gameWrapper > * {
+  flex-grow: 1;
+}
+
+.gamePlaceholderCard {
+  height: 100%;
+  min-height: 250px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  border: 1px dashed var(--blue-sky);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--blue-sky);
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
 .lockedOverlayAbsolute {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(1, 37, 97, 0.4), rgba(1, 37, 97, 1) 40%);
+  top: -20px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  background: rgba(1, 37, 97, 0.4);
+  backdrop-filter: blur(6px);
   z-index: 50;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 80px;
+  align-items: center;
   border-radius: 20px;
 }
 
 .lockedOverlayContent {
-  background: rgba(1, 37, 97, 0.9);
+  background: rgba(1, 37, 97, 0.95);
   padding: 40px;
   border-radius: 20px;
   border: 2px solid var(--yellow-horizon);
-  box-shadow: 0 0 40px rgba(255, 183, 0, 0.3);
+  box-shadow: 0 10px 40px rgba(255, 183, 0, 0.4);
   text-align: center;
   animation: slideUp 0.5s ease;
+  max-width: 500px;
 }
 
 .lockedOverlayContent h3 {
@@ -80,28 +118,8 @@
   box-shadow: 0 8px 25px rgba(255, 183, 0, 0.6);
 }
 
-/* Aspecto visual de los juegos difuminados */
-.gamePlaceholderCard {
-  height: 150px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  border: 1px dashed var(--blue-sky);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: var(--blue-sky);
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.gameWrapper {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
 .finalSuccess {
+  width: 100%;
   text-align: center;
   padding: 40px;
   background: rgba(255, 183, 0, 0.1);
@@ -122,7 +140,6 @@
   font-size: 1.2rem;
 }
 
-/* Modal de registro */
 .modalOverlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;

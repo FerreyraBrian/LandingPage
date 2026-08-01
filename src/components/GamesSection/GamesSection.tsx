@@ -35,25 +35,27 @@ export default function GamesSection() {
   const getGameStyle = (levelIndex: number) => {
     if (unlockedLevel > levelIndex) {
       return {
-        opacity: 0.7,
-        transform: 'scale(0.95)',
+        opacity: 0.8,
+        transform: 'translateY(-10px)',
         pointerEvents: 'none' as const,
-        filter: 'grayscale(50%)'
+        filter: 'grayscale(50%)',
+        boxShadow: '0 15px 30px rgba(0,0,0,0.4)'
       };
     }
     if (unlockedLevel === levelIndex) {
       return {
         opacity: 1,
-        transform: 'scale(1)',
-        boxShadow: '0 0 30px rgba(255, 183, 0, 0.3)',
+        transform: 'translateY(-25px) scale(1.02)',
+        boxShadow: '0 20px 40px rgba(255, 183, 0, 0.5)',
         zIndex: 10
       };
     }
     return {
       opacity: 0.6,
-      transform: 'scale(0.9)',
+      transform: 'translateY(0)',
       pointerEvents: 'none' as const,
-      filter: 'blur(1.5px)'
+      filter: 'blur(2px)',
+      boxShadow: '0 10px 20px rgba(0,0,0,0.3)'
     };
   };
 
@@ -65,7 +67,7 @@ export default function GamesSection() {
           <p>Teste seus conhecimentos e descubra seu nível de domínio do idioma espanhol.</p>
         </div>
 
-        <div className={styles.gamesContainer} style={{ display: 'flex', flexDirection: 'column', gap: '30px', position: 'relative' }}>
+        <div className={styles.gamesContainer}>
           
           {unlockedLevel === 0 && (
             <div className={styles.lockedOverlayAbsolute}>
