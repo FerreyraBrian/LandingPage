@@ -1,0 +1,27 @@
+{
+    "name":  "landingpage",
+    "version":  "1.0.0",
+    "description":  "Uma landing page interativa com temática celestial projetada para a escola de idiomas \"Horizonte Espanhol\". \r O foco do projeto é converter leads através de uma experiência gamificada (Jogo da Forca).",
+    "main":  "index.js",
+    "scripts":  {
+                    "test":  "echo \"Error: no test specified\" \u0026\u0026 exit 1",
+                    "dev":  "vite"
+                },
+    "repository":  {
+                       "type":  "git",
+                       "url":  "git+https://github.com/horizonteespanhol/LandingPage.git"
+                   },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "ISC",
+    "type":  "commonjs",
+    "bugs":  {
+                 "url":  "https://github.com/horizonteespanhol/LandingPage/issues"
+             },
+    "homepage":  "https://github.com/horizonteespanhol/LandingPage#readme",
+    "devDependencies":  {
+                            "vite":  "^8.2.0"
+                        }
+}
