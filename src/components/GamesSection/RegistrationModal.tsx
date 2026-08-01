@@ -50,13 +50,12 @@ export default function RegistrationModal({ onClose, onSuccess }: Props) {
             <input type="tel" name="telefone" placeholder="Seu Telefone" required />
           </div>
           <div className={styles.formGroup}>
-            <select name="motivo" required>
-              <option value="">Por que estudar espanhol?</option>
-              <option value="viagem">Para viajar</option>
-              <option value="trabalho">Para trabalhar</option>
-              <option value="certificacao">Para certificação</option>
-              <option value="outro">Outro motivo</option>
-            </select>
+            <textarea 
+              name="motivo" 
+              placeholder="Por que você quer estudar espanhol? (Deixe sua ideia aqui)" 
+              required 
+              rows={3}
+            ></textarea>
           </div>
           
           <button type="submit" className={styles.submitModalBtn} disabled={status === 'submitting'}>
