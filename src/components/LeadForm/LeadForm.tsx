@@ -51,7 +51,7 @@ export default function LeadForm() {
           </div>
           
           <button type="submit" className={styles.submitBtn} disabled={status === 'submitting'}>
-            {status === 'submitting' ? 'Enviando...' : status === 'success' ? 'Enviado! ✅' : 'Enviar consulta'}
+            {status === 'submitting' ? 'Enviando...' : status === 'success' ? 'Enviado!' : 'Enviar consulta'}
           </button>
         </form>
       </div>
