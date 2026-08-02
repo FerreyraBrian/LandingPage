@@ -1,5 +1,5 @@
 .section {
-  padding: 88px 20px 0;
+  padding: 88px 20px 48px;
   background-color: var(--bg-color);
   position: relative;
   overflow: hidden;
@@ -372,7 +372,7 @@
 
 @media (max-width: 640px) {
   .section {
-    padding: 62px 14px 0;
+    padding: 62px 14px 36px;
   }
 
   .section::before {

@@ -1,6 +1,6 @@
 .carouselContainer {
   position: relative;
-  height: 760px;
+  height: clamp(640px, 86svh, 760px);
   width: 100%;
   overflow: hidden;
   background:
@@ -47,9 +47,9 @@
 }
 
 .slide {
-  width: 300px;
-  height: 400px;
-  margin: 0 20px;
+  width: min(78vw, 300px);
+  height: min(54vw, 400px);
+  margin: 0 12px;
   flex-shrink: 0;
   filter: drop-shadow(0 0 15px rgba(255, 183, 0, 0.3));
 }
@@ -106,7 +106,7 @@
 
 @media (max-width: 640px) {
   .carouselContainer {
-    height: 790px;
+    height: min(84svh, 720px);
   }
 
   .heroTopBrand {
@@ -116,7 +116,14 @@
   }
 
   .heroText {
-    bottom: 6px;
+    bottom: 12px;
     gap: 14px;
+    padding: 0 14px;
+  }
+
+  .slide {
+    width: min(72vw, 250px);
+    height: min(48vw, 320px);
+    margin: 0 10px;
   }
 }

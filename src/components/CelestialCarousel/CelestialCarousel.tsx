@@ -8,38 +8,37 @@ export default function CelestialCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let animationFrameId: number;
+    if (!containerRef.current || !trackRef.current) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    const shouldAnimate = !prefersReducedMotion && !isTouchDevice && window.innerWidth > 640;
+
+    containerRef.current.style.setProperty('--track-offset', '0px');
+
+    if (!shouldAnimate) {
+      return;
+    }
+
+    let animationFrameId = 0;
     let position = 0;
 
-    // Clear any stale inline transforms from previous hot-reload states.
-    if (containerRef.current) {
-      const topBrandEl = containerRef.current.querySelector(`.${styles.heroTopBrand}`) as HTMLDivElement | null;
-      if (topBrandEl) {
-        topBrandEl.style.transform = '';
-      }
-    }
-
-    if (trackRef.current) {
-      trackRef.current.style.transform = '';
-    }
-
     const animate = () => {
-      if (trackRef.current) {
-        position -= 0.5; // Speed
-        // Reset when half of the track (the original set) has scrolled
-        if (position <= -(trackRef.current.scrollWidth / 2)) {
-          position = 0;
-        }
-        if (containerRef.current) {
-          containerRef.current.style.setProperty('--track-offset', `${position}px`);
-        }
+      position -= 0.35;
+
+      if (position <= -(trackRef.current!.scrollWidth / 2)) {
+        position = 0;
       }
-      animationFrameId = requestAnimationFrame(animate);
+
+      containerRef.current?.style.setProperty('--track-offset', `${position}px`);
+      animationFrameId = window.requestAnimationFrame(animate);
     };
 
-    animate();
+    animationFrameId = window.requestAnimationFrame(animate);
 
-    return () => cancelAnimationFrame(animationFrameId);
+    return () => window.cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (

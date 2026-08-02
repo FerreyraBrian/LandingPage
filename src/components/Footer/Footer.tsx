@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={`reveal ${styles.footer}`}>
       <div className={styles.content}>
         <div className={styles.signature} aria-label="Horizonte Espanhol - Idioma e Cultura">
           <span className={styles.signatureTitle}>Horizonte Espanhol</span>

@@ -3,9 +3,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 24px 44px 20px;
+  padding: 20px 24px 16px;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   z-index: 100;
   background: transparent;
@@ -15,11 +15,12 @@
   justify-self: start;
   display: flex;
   align-items: center;
-  padding-top: 8px;
+  padding-top: 6px;
+  min-width: 0;
 }
 
 .logoCircle {
-  width: clamp(96px, 12vw, 136px);
+  width: clamp(78px, 10vw, 120px);
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--surface-strong);
@@ -27,6 +28,7 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .logoImage {
@@ -43,39 +45,99 @@
   justify-content: center;
   align-items: center;
   min-width: 0;
-  padding: 0 20px;
+  width: min(100%, 220px);
+  padding: 0 12px;
   justify-self: center;
+  overflow: hidden;
 }
 
 .socials {
   display: flex;
-  gap: 14px;
+  gap: 10px;
   justify-self: end;
   align-items: center;
-  padding-top: 8px;
+  padding-top: 6px;
+  flex-wrap: nowrap;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: end;
+}
+
+.desktopActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 18px var(--header-shadow);
+}
+
+.menuIcon {
+  position: relative;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  display: inline-block;
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.menuIcon::before {
+  top: -6px;
+}
+
+.menuIcon::after {
+  top: 6px;
+}
+
+.mobileMenu {
+  display: none;
 }
 
 .themeToggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: 0.55rem 0.7rem;
+  gap: 0.6rem;
+  padding: 0.5rem 0.7rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.82), rgba(255,255,255,0.68));
+  min-height: 42px;
+  background: linear-gradient(135deg, rgba(9, 22, 40, 0.95), rgba(20, 39, 70, 0.88));
   color: var(--text-color);
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(110, 170, 255, 0.28);
   box-shadow: 0 10px 22px var(--header-shadow);
   backdrop-filter: blur(10px);
   transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
 :root[data-theme='light'] .themeToggle {
-  background: linear-gradient(135deg, rgba(255,255,255,0.94), rgba(241,244,248,0.9));
+  background: linear-gradient(135deg, #f8efd8 0%, #e9f4fb 55%, #dceeff 100%);
+  border-color: rgba(31, 74, 107, 0.22);
 }
 
-.themeToggle:hover {
-  transform: translateY(-1px);
-  background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(240,243,247,0.84));
+:root[data-theme='light'] .themeToggle:hover {
+  background: linear-gradient(135deg, #fbf4e2 0%, #eef8ff 50%, #e3efff 100%);
 }
 
 .themeToggleTrack {
@@ -83,11 +145,26 @@
   width: 44px;
   height: 24px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #1f4a6b, #5b7fa1);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.24);
+  background: linear-gradient(135deg, #0b2d5c 0%, #1f6dff 50%, #49a7ff 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.24), 0 0 0 1px rgba(34, 102, 255, 0.25);
   display: inline-flex;
   align-items: center;
   padding: 3px;
+}
+
+:root[data-theme='light'] .themeToggleTrack {
+  background: linear-gradient(135deg, rgba(248, 239, 216, 0.98) 0%, rgba(233, 244, 251, 0.95) 50%, rgba(145, 191, 221, 0.38) 100%);
+  box-shadow: inset 0 0 0 1px rgba(31, 74, 107, 0.16), 0 0 0 1px rgba(31, 74, 107, 0.16);
+}
+
+:root[data-theme='light'] .themeToggleThumb {
+  background: #1f4a6b;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.82), 0 2px 8px rgba(31, 74, 107, 0.22);
+}
+
+:root[data-theme='light'] .themeToggleThumbActive {
+  background: #f7fbff;
+  box-shadow: 0 0 0 2px rgba(31, 74, 107, 0.2), 0 2px 8px rgba(31, 74, 107, 0.22);
 }
 
 .themeToggleThumb {
@@ -102,59 +179,166 @@
 
 .themeToggleThumbActive {
   transform: translateX(20px);
-  background: #ffd7a8;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(18, 88, 255, 0.2), 0 2px 10px rgba(10, 50, 140, 0.3);
 }
 
 .themeToggleLabel {
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+:root[data-theme='light'] .themeToggleLabel {
+  color: #1f4a6b;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .socialLink {
   color: var(--text-color);
-  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
 }
 
 .socialLink:hover {
   color: var(--yellow-horizon);
-  transform: scale(1.1);
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
   .header {
-    padding: 16px 18px 16px;
-    grid-template-columns: auto 1fr auto;
-    gap: 10px;
-  }
-
-  .logoCircle {
-    width: 88px;
+    padding: 16px 18px 12px;
+    gap: 8px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
   }
 
   .brandingSlot {
     padding: 0 6px;
+    width: min(100%, 180px);
+  }
+
+  .logoCircle {
+    width: clamp(70px, 9vw, 96px);
+  }
+
+  .desktopActions {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-flex;
+    color: var(--text-color);
+  }
+
+  .actions {
+    position: relative;
+    gap: 6px;
+  }
+}
+
+@media (min-width: 901px) {
+  .menuButton {
+    display: none !important;
+  }
+
+  .mobileMenu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 10px 10px 8px;
+    display: grid;
+    align-items: center;
+    gap: 6px;
+    grid-template-columns: 72px minmax(0, 1fr) 44px;
+  }
+
+  .logoContainer {
+    padding-top: 0;
+    min-width: 0;
+  }
+
+  .brandingSlot {
+    width: 100%;
+    min-width: 0;
+    padding: 0 2px;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .actions {
+    position: relative;
+    gap: 4px;
+    justify-self: end;
+    min-width: 44px;
+  }
+
+  .mobileMenu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 16px;
+    background: rgba(8, 20, 38, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.24);
+    min-width: 170px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  :root[data-theme='light'] .mobileMenu {
+    background: rgba(247, 239, 226, 0.97);
+    border-color: rgba(31, 74, 107, 0.16);
+  }
+
+  .mobileMenuOpen {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .logoCircle {
+    width: 120px;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
   }
 
   .socials {
-    gap: 10px;
+    gap: 6px;
     padding-top: 0;
   }
 
   .themeToggle {
-    padding: 0.5rem 0.7rem;
-    gap: 0.55rem;
+    padding: 0.4rem 0.55rem;
+    gap: 0.45rem;
+    min-height: 38px;
   }
 
   .themeToggleTrack {
-    width: 40px;
-    height: 22px;
+    width: 38px;
+    height: 20px;
   }
 
   .themeToggleThumb {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
 
   .themeToggleThumbActive {
@@ -162,6 +346,17 @@
   }
 
   .themeToggleLabel {
-    font-size: 0.64rem;
+    font-size: 0.58rem;
+  }
+
+  .socialLink {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mobileMenu .themeToggle,
+  .mobileMenu .socialLink {
+    width: 100%;
+    justify-content: center;
   }
 }
