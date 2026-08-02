@@ -1,5 +1,5 @@
 .section {
-  padding: 28px 20px 74px;
+  padding: var(--section-padding-block) var(--section-padding-inline);
   background-color: var(--bg-color);
   display: flex;
   justify-content: center;
@@ -11,7 +11,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.08) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.08) 100%);
   pointer-events: none;
   opacity: 0.7;
 }
@@ -20,8 +20,8 @@
   max-width: 800px;
   width: 100%;
   background: var(--surface-color);
-  border-radius: 20px;
-  padding: 40px;
+  border-radius: var(--section-radius);
+  padding: var(--section-container-padding);
   border: 1px solid var(--card-border);
   box-shadow: 0 10px 30px var(--card-shadow);
   display: flex;
@@ -31,7 +31,7 @@
 
 .content {
   text-align: center;
-  margin-bottom: 26px;
+  margin-bottom: var(--section-gap);
 }
 
 .content h2 {
@@ -50,13 +50,13 @@
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--space-3);
 }
 
 .formGroup input,
 .formGroup textarea {
   width: 100%;
-  padding: 15px 20px;
+  padding: 0.95rem 1.1rem;
   border-radius: 10px;
   border: 1px solid var(--card-border);
   background: var(--input-bg);
@@ -76,7 +76,7 @@
 .submitBtn {
   background-color: var(--button-accent-bg);
   color: var(--button-accent-text);
-  padding: 13px 28px;
+  padding: 0.95rem 1.4rem;
   font-size: 1.2rem;
   font-weight: bold;
   border-radius: 50px;
@@ -103,7 +103,7 @@
   .container {
     padding: 28px 18px;
   }
-  
+
   .content h2 {
     font-size: 1.9rem;
   }

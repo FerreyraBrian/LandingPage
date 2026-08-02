@@ -1,4 +1,5 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@500;600;700&family=Sora:wght@500;600;700;800&display=swap');
+﻿@import url('https://fonts.cdnfonts.com/css/codec-pro');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@500;600;700&family=Sora:wght@500;600;700;800&display=swap');
 @import './animations.css';
 
 :root {
@@ -8,6 +9,7 @@
   --brand-ink: #000000;
   --font-brand-serif: 'Playfair Display', Georgia, serif;
   --font-brand-script: 'Parisienne', 'Great Vibes', 'Brush Script MT', 'Lucida Handwriting', cursive;
+  --font-brand-codec: 'Codec Pro', var(--font-brand-script), sans-serif;
   --font-brand-sans: 'Sora', 'Montserrat', 'Segoe UI', sans-serif;
   --blue-deep: #012561;
   --blue-sky: #64b5d8;
@@ -27,6 +29,18 @@
   --hero-subtitle-color: rgba(255, 255, 255, 0.85);
   --header-shadow: rgba(3, 24, 54, 0.24);
   --card-bg: linear-gradient(145deg, rgba(4, 53, 123, 0.92), rgba(1, 37, 97, 0.88));
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 2.5rem;
+  --space-7: 3rem;
+  --section-padding-block: clamp(4.25rem, 8vw, 6.25rem);
+  --section-padding-inline: clamp(1rem, 3vw, 2rem);
+  --section-container-padding: clamp(1.5rem, 3vw, 2.5rem);
+  --section-gap: clamp(1.25rem, 2.5vw, 2rem);
+  --section-radius: 1.5rem;
   --card-border: rgba(100, 181, 216, 0.36);
   --card-shadow: rgba(0, 0, 0, 0.36);
   --input-bg: rgba(255, 255, 255, 0.05);
@@ -99,6 +113,7 @@ button {
   font-family: inherit;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: inherit;
 }
