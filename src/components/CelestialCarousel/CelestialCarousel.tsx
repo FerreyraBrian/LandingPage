@@ -48,17 +48,19 @@ export default function CelestialCarousel() {
         {/* Duplicate the array to create an infinite scroll illusion */}
         {[...IMAGES, ...IMAGES].map((src, idx) => (
           <div key={idx} className={styles.slide}>
-            <div className={styles.imagePlaceholder} style={{ backgroundImage: `url(${src})` }}>
-              <span className={styles.placeholderText}>Imagen { (idx % 10) + 1 }</span>
-            </div>
+            <div className={styles.imagePlaceholder} style={{ backgroundImage: `url(${src})` }} />
           </div>
         ))}
       </div>
       
       <div className={styles.heroText}>
         <div className={styles.heroCopy}>
-          <h1>A fluência transforma o seu futuro</h1>
-          <p>Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.</p>
+          <div className={styles.heroTitleBlock}>
+            <h1>A fluência transforma o seu futuro</h1>
+          </div>
+          <div className={styles.heroSubtitleBlock}>
+            <p>Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.</p>
+          </div>
         </div>
       </div>
     </div>

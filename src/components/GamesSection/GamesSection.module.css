@@ -369,29 +369,31 @@
 
 @media (max-width: 640px) {
   .section {
-    padding: 62px 14px 36px;
+    padding: 48px 12px 28px;
   }
 
   .section::before {
-    height: 40px;
-    transform: translateY(-40px);
+    height: 28px;
+    transform: translateY(-28px);
   }
 
   .header {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .header h2 {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    font-size: clamp(1.45rem, 5.4vw, 1.8rem);
   }
 
   .header p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.45;
   }
 
   .gamesContainer {
-    min-height: 526px;
-    padding: 6px 0 0;
+    min-height: 460px;
+    padding: 4px 0 0;
   }
 
   .deckStack {
@@ -399,33 +401,114 @@
   }
 
   .levelCard {
-    border-radius: 20px;
-    padding: 16px;
+    border-radius: 18px;
+    padding: 14px;
     transform:
-      translateY(calc((var(--card-index) - 1) * 76px)) rotate(calc((var(--card-index) - 1) * -1deg));
+      translateY(calc((var(--card-index) - 1) * 64px)) rotate(calc((var(--card-index) - 1) * -0.8deg));
   }
 
   .currentCard {
     transform:
-      translateY(calc(((var(--card-index) - 1) * 76px) - 8px)) rotate(-0.35deg) scale(1.005);
+      translateY(calc(((var(--card-index) - 1) * 64px) - 6px)) rotate(-0.25deg) scale(1.002);
   }
 
   .levelCard h3 {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+
+  .levelCard p {
+    margin-bottom: 10px;
+    font-size: 0.92rem;
   }
 
   .cardTopLine {
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .activeGameShell {
-    padding: 12px;
+    padding: 10px;
   }
 
   .lockHint {
+    font-size: 0.82rem;
+    padding: 8px 10px;
+  }
+
+  .startBtn {
+    font-size: 1rem;
+    padding: 10px 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .section {
+    padding: 40px 10px 22px;
+  }
+
+  .header {
+    margin-bottom: 12px;
+  }
+
+  .header h2 {
+    font-size: clamp(1.25rem, 5.5vw, 1.5rem);
+    margin-bottom: 4px;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .gamesContainer {
+    min-height: 400px;
+  }
+
+  .levelCard {
+    padding: 12px;
+    border-radius: 16px;
+    transform:
+      translateY(calc((var(--card-index) - 1) * 54px)) rotate(calc((var(--card-index) - 1) * -0.7deg));
+  }
+
+  .currentCard {
+    transform:
+      translateY(calc(((var(--card-index) - 1) * 54px) - 5px)) rotate(-0.2deg) scale(1.001);
+  }
+
+  .levelCard h3 {
+    font-size: 1.08rem;
+  }
+
+  .levelCard p {
     font-size: 0.86rem;
-    padding: 10px 12px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .cardTopLine {
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .levelPill {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
+  .activeGameShell {
+    padding: 8px;
+  }
+
+  .lockHint {
+    font-size: 0.8rem;
+    padding: 7px 9px;
+  }
+
+  .startBtn {
+    font-size: 0.95rem;
+    padding: 9px 20px;
   }
 }

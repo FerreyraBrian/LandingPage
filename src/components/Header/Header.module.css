@@ -365,14 +365,16 @@
   .logoContainer {
     padding-top: 0;
     min-width: 0;
+    margin-right: 2px;
   }
 
   .brandingSlot {
     width: 100%;
     min-width: 0;
     padding: 0 2px;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: visible;
+    margin-left: 4px;
   }
 
   .actions {
@@ -380,6 +382,7 @@
     gap: 4px;
     justify-self: end;
     min-width: 44px;
+    margin-left: 2px;
   }
 
   .mobileMenu {
@@ -476,5 +479,68 @@
   .mobileMenu .themeToggle,
   .mobileMenu .socialLink {
     justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .header {
+    padding: 8px 8px 6px;
+    grid-template-columns: 56px minmax(0, 1fr) 42px;
+    gap: 4px;
+  }
+
+  .logoCircle {
+    width: 88px;
+  }
+
+  .brandingSlot {
+    width: min(100%, 170px);
+    padding: 0 1px;
+  }
+
+  .signatureTitle {
+    font-size: 0.9rem;
+    line-height: 1.02;
+  }
+
+  .signatureSubtitle {
+    font-size: 0.54rem;
+    letter-spacing: 0.12em;
+  }
+
+  .menuButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobileMenu {
+    right: 2px;
+    min-width: min(210px, 90vw);
+    padding: 13px;
+    border-radius: 16px;
+  }
+
+  .themeToggle {
+    min-height: 40px;
+    padding: 0.55rem 0.7rem;
+    border-radius: 14px;
+  }
+
+  .themeToggleTrack {
+    width: 40px;
+    height: 20px;
+  }
+
+  .themeToggleLabel {
+    font-size: 0.64rem;
+  }
+
+  .socialLink {
+    padding: 10px 0;
+  }
+
+  .socialLink svg {
+    width: 20px;
+    height: 20px;
   }
 }
