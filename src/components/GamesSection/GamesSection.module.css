@@ -1,5 +1,6 @@
 .section {
-  padding: var(--section-padding-block) var(--section-padding-inline);
+  /* Keep horizontal container padding but harmonize top spacing across app */
+  padding: var(--section-top) var(--section-padding-inline) 0;
   background-color: var(--bg-color);
   position: relative;
   overflow: hidden;

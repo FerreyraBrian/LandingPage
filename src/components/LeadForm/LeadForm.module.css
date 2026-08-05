@@ -1,5 +1,6 @@
 .section {
-  padding: var(--section-padding-block) var(--section-padding-inline);
+  /* Harmonized top spacing with hero using the shared token */
+  padding: var(--section-top) var(--section-padding-inline) 0;
   background-color: var(--bg-color);
   display: flex;
   justify-content: center;

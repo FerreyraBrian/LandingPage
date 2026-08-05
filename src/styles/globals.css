@@ -41,6 +41,9 @@
   --section-container-padding: clamp(1.5rem, 3vw, 2.5rem);
   --section-gap: clamp(1.25rem, 2.5vw, 2rem);
   --section-radius: 1.5rem;
+  /* Harmony tokens: section-top and hero-bottom provide consistent vertical rhythm */
+  --section-top: var(--section-padding-block);
+  --hero-bottom: 1.25rem;
   --card-border: rgba(100, 181, 216, 0.36);
   --card-shadow: rgba(0, 0, 0, 0.36);
   --input-bg: rgba(255, 255, 255, 0.05);
