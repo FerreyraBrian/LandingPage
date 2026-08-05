@@ -117,3 +117,21 @@ input,
 textarea {
   font-family: inherit;
 }
+
+@media (max-width: 320px) {
+  :root {
+    --section-padding-inline: 0.85rem;
+    --section-container-padding: 0.85rem;
+    --section-gap: 1rem;
+    --section-padding-block: 3.5rem;
+  }
+}
+
+@media (max-width: 250px) {
+  :root {
+    --section-padding-inline: 0.75rem;
+    --section-container-padding: 0.75rem;
+    --section-gap: 0.85rem;
+    --section-padding-block: 3rem;
+  }
+}

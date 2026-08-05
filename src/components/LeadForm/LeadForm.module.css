@@ -53,6 +53,96 @@
   gap: var(--space-3);
 }
 
+.phoneFieldGroup {
+  display: grid;
+  grid-template-columns: minmax(86px, 96px) minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: stretch;
+}
+
+.countryFieldLabel {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.countrySelect {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 183, 0, 0.24);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+  color: var(--text-color);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.1;
+  appearance: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 6px 16px rgba(0, 0, 0, 0.14);
+  transition: all 0.2s ease;
+  background-image: linear-gradient(45deg, transparent 50%, var(--yellow-horizon) 50%), linear-gradient(135deg, var(--yellow-horizon) 50%, transparent 50%);
+  background-position: calc(100% - 12px) calc(50% - 2px), calc(100% - 8px) calc(50% - 2px);
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  padding-right: 1.8rem;
+}
+
+.countrySelect option {
+  font-size: 0.92rem;
+  padding: 0.4rem;
+}
+
+.countrySelect:hover {
+  border-color: rgba(255, 183, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.countrySelect:focus {
+  outline: none;
+  border-color: var(--yellow-horizon);
+  box-shadow: 0 0 0 3px rgba(255, 183, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.stateFieldLabel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 183, 0, 0.82);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.stateSelect {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.8rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 183, 0, 0.24);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+  color: var(--text-color);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  appearance: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 6px 16px rgba(0, 0, 0, 0.14);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.stateSelect:hover {
+  border-color: rgba(255, 183, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.stateSelect:focus {
+  outline: none;
+  border-color: var(--yellow-horizon);
+  box-shadow: 0 0 0 3px rgba(255, 183, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.phoneInput,
 .formGroup input,
 .formGroup textarea {
   width: 100%;
@@ -66,6 +156,7 @@
   min-height: 48px;
 }
 
+.phoneInput:focus,
 .formGroup input:focus,
 .formGroup textarea:focus {
   outline: none;
@@ -122,6 +213,19 @@
     gap: 10px;
   }
 
+  .phoneFieldGroup {
+    grid-template-columns: minmax(80px, 92px) minmax(0, 1fr);
+    gap: 0.55rem;
+  }
+
+  .countrySelect {
+    min-height: 42px;
+    padding: 0.66rem 0.75rem;
+    font-size: 0.88rem;
+    padding-right: 1.7rem;
+  }
+
+  .phoneInput,
   .formGroup input,
   .formGroup textarea {
     padding: 0.8rem 0.95rem;
@@ -161,6 +265,18 @@
     gap: 8px;
   }
 
+  .phoneFieldGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .countrySelect {
+    min-height: 40px;
+    padding: 0.62rem 0.72rem;
+    font-size: 0.84rem;
+    padding-right: 1.6rem;
+  }
+
+  .phoneInput,
   .formGroup input,
   .formGroup textarea {
     padding: 0.74rem 0.85rem;

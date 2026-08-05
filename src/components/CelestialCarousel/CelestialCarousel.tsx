@@ -12,24 +12,17 @@ export default function CelestialCarousel() {
       return;
     }
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-    const shouldAnimate = !prefersReducedMotion && !isTouchDevice && window.innerWidth > 640;
-
     containerRef.current.style.setProperty('--track-offset', '0px');
-
-    if (!shouldAnimate) {
-      return;
-    }
 
     let animationFrameId = 0;
     let position = 0;
 
     const animate = () => {
-      position -= 0.35;
+      position -= 1.2;
+      const halfWidth = trackRef.current!.scrollWidth / 2;
 
-      if (position <= -(trackRef.current!.scrollWidth / 2)) {
-        position = 0;
+      if (position <= -halfWidth) {
+        position += halfWidth;
       }
 
       containerRef.current?.style.setProperty('--track-offset', `${position}px`);

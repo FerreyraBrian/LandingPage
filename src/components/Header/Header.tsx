@@ -20,8 +20,10 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <div className={styles.logoCircle}>
-          <img src="/images/logo-horizonte.png" alt="Horizonte Espanhol" className={styles.logoImage} />
+        <div className={styles.logoWrapper}>
+          <div className={styles.logoCircle}>
+            <img src="/images/logo-horizonte.png" alt="Horizonte Espanhol" className={styles.logoImage} />
+          </div>
         </div>
       </div>
 

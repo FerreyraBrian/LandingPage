@@ -61,14 +61,15 @@
 .deckStack {
   width: min(100%, 920px);
   display: grid;
-  align-items: start;
+  row-gap: -108px;
+  padding-bottom: 108px;
   perspective: 1400px;
 }
 
 .levelCard {
   --card-index: 1;
-  grid-area: 1 / 1;
   position: relative;
+  margin-top: 0;
   border-radius: 24px;
   padding: clamp(1.25rem, 2.4vw, 1.75rem);
   border: 1px solid var(--card-border);
@@ -76,8 +77,7 @@
   box-shadow: 0 20px 36px var(--card-shadow);
   transition: transform 0.45s ease, box-shadow 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
   transform-origin: top center;
-  transform:
-    translateY(calc((var(--card-index) - 1) * 108px)) rotate(calc((var(--card-index) - 1) * -1.35deg));
+  transform: rotate(calc((var(--card-index) - 1) * -1.35deg));
   z-index: calc(40 - var(--card-index));
 }
 
@@ -129,8 +129,8 @@
 
 .currentCard {
   z-index: 60;
-  transform:
-    translateY(calc(((var(--card-index) - 1) * 108px) - 14px)) rotate(-0.6deg) scale(1.01);
+  margin-top: calc(((var(--card-index) - 1) * -108px) - 14px);
+  transform: rotate(-0.6deg) scale(1.01);
   border-color: rgba(255, 183, 0, 0.58);
   box-shadow: 0 28px 50px rgba(0, 0, 0, 0.44);
   opacity: 1;
@@ -217,23 +217,63 @@
 .finalSuccess {
   width: min(100%, 920px);
   text-align: center;
-  padding: 30px;
-  background: var(--accent-soft);
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(255, 183, 0, 0.16), rgba(31, 74, 117, 0.18));
   border: 2px solid var(--yellow-horizon);
-  border-radius: 20px;
+  border-radius: 24px;
   animation: slideUp 0.8s ease-out forwards;
   z-index: 20;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
 }
 
 .finalSuccess h3 {
   color: var(--yellow-horizon);
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 12px;
 }
 
-.finalSuccess p {
-  color: var(--white);
+.resultHighlight {
+  color: var(--yellow-horizon);
   font-size: 1.2rem;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.resultBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px auto 18px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 183, 0, 0.35);
+  color: var(--text-color);
+}
+
+.resultBadge span {
+  font-size: 1.3rem;
+}
+
+.resultStats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.resultStats div {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-color);
+}
+
+.resultMessage {
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: 1rem;
 }
 
 .modalOverlay {
@@ -242,7 +282,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(35, 54, 66, 0.48);
+  background: rgba(4, 21, 45, 0.9);
   backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
@@ -252,11 +292,11 @@
 }
 
 .modalContent {
-  background: var(--surface-strong);
+  background: rgba(253, 248, 239, 0.95);
   padding: 40px;
   border-radius: 20px;
-  border: 1px solid var(--card-border);
-  box-shadow: 0 10px 40px var(--card-shadow);
+  border: 1px solid rgba(31, 74, 107, 0.18);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
   width: 90%;
   max-width: 500px;
   position: relative;
@@ -268,19 +308,19 @@
   top: 15px;
   right: 20px;
   background: transparent;
-  color: var(--text-color);
+  color: #0f172a;
   font-size: 2rem;
   line-height: 1;
 }
 
 .modalContent h3 {
-  color: var(--yellow-horizon);
+  color: #1f4a6b;
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
 .modalContent p {
-  color: var(--text-muted);
+  color: #475569;
   margin-bottom: 25px;
 }
 
@@ -294,18 +334,31 @@
   width: 100%;
   padding: 12px 15px;
   border-radius: 10px;
-  border: 1px solid var(--card-border);
-  background: var(--input-bg);
-  color: var(--text-color);
+  border: 1px solid rgba(31, 74, 107, 0.18);
+  background: #ffffff;
+  color: #0f172a;
   font-family: inherit;
   resize: vertical;
+}
+
+.formGroup input:hover,
+.formGroup select:hover,
+.formGroup textarea:hover {
+  background: #f8f2e8;
+  color: #0f172a;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: rgba(15, 23, 42, 0.5);
 }
 
 .formGroup input:focus,
 .formGroup select:focus,
 .formGroup textarea:focus {
   outline: none;
-  border-color: var(--yellow-horizon);
+  border-color: #ffb700;
+  box-shadow: 0 0 0 4px rgba(255, 183, 0, 0.18);
 }
 
 .formGroup select option {
@@ -333,7 +386,7 @@
 
 @media (max-width: 900px) {
   .section {
-    padding: 74px 18px 0;
+    padding: 64px 16px 0;
   }
 
   .section::before {
@@ -342,84 +395,95 @@
   }
 
   .gamesContainer {
-    min-height: 626px;
-    padding: 8px 0 0;
+    min-height: 500px;
+    padding: 12px 0 0;
+    justify-content: stretch;
   }
 
   .header {
-    margin-bottom: 26px;
+    margin-bottom: 22px;
+  }
+
+  .deckStack {
+    display: grid;
+    row-gap: -82px;
+    padding-bottom: 82px;
   }
 
   .levelCard {
     padding: 20px;
-    transform:
-      translateY(calc((var(--card-index) - 1) * 96px)) rotate(calc((var(--card-index) - 1) * -1.2deg));
+    margin-top: 0;
+    transform: rotate(calc((var(--card-index) - 1) * -1.1deg));
   }
 
   .currentCard {
-    transform:
-      translateY(calc(((var(--card-index) - 1) * 96px) - 10px)) rotate(-0.5deg) scale(1.01);
+    margin-top: 0;
+    transform: rotate(-0.4deg) scale(1.011);
   }
 
   .startBtn {
-    font-size: 1.2rem;
-    padding: 12px 32px;
+    font-size: 1.15rem;
+    padding: 12px 30px;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 48px 12px 28px;
+    padding: 40px 10px 24px;
   }
 
   .section::before {
-    height: 28px;
-    transform: translateY(-28px);
+    height: 26px;
+    transform: translateY(-26px);
   }
 
   .header {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .header h2 {
     margin-bottom: 6px;
-    font-size: clamp(1.45rem, 5.4vw, 1.8rem);
+    font-size: clamp(1.4rem, 5.2vw, 1.75rem);
   }
 
   .header p {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     line-height: 1.45;
   }
 
   .gamesContainer {
-    min-height: 460px;
-    padding: 4px 0 0;
+    min-height: 420px;
+    padding: 2px 0 0;
+    justify-content: stretch;
   }
 
   .deckStack {
     width: 100%;
+    display: grid;
+    row-gap: -54px;
+    padding-bottom: 54px;
   }
 
   .levelCard {
+    margin-top: 0;
     border-radius: 18px;
-    padding: 14px;
-    transform:
-      translateY(calc((var(--card-index) - 1) * 64px)) rotate(calc((var(--card-index) - 1) * -0.8deg));
+    padding: 16px;
+    transform: rotate(calc((var(--card-index) - 1) * -0.7deg));
   }
 
   .currentCard {
-    transform:
-      translateY(calc(((var(--card-index) - 1) * 64px) - 6px)) rotate(-0.25deg) scale(1.002);
+    margin-top: 0;
+    transform: rotate(-0.18deg) scale(1.001);
   }
 
   .levelCard h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin-bottom: 6px;
   }
 
   .levelCard p {
     margin-bottom: 10px;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
   }
 
   .cardTopLine {
@@ -429,7 +493,7 @@
   }
 
   .activeGameShell {
-    padding: 10px;
+    padding: 12px;
   }
 
   .lockHint {
@@ -439,7 +503,7 @@
 
   .startBtn {
     font-size: 1rem;
-    padding: 10px 24px;
+    padding: 10px 26px;
   }
 }
 
@@ -466,16 +530,23 @@
     min-height: 400px;
   }
 
+  .deckStack {
+    width: 100%;
+    display: grid;
+    row-gap: -54px;
+    padding-bottom: 54px;
+  }
+
   .levelCard {
     padding: 12px;
     border-radius: 16px;
-    transform:
-      translateY(calc((var(--card-index) - 1) * 54px)) rotate(calc((var(--card-index) - 1) * -0.7deg));
+    margin-top: 0;
+    transform: rotate(calc((var(--card-index) - 1) * -0.7deg));
   }
 
   .currentCard {
-    transform:
-      translateY(calc(((var(--card-index) - 1) * 54px) - 5px)) rotate(-0.2deg) scale(1.001);
+    margin-top: 0;
+    transform: rotate(-0.2deg) scale(1.001);
   }
 
   .levelCard h3 {
