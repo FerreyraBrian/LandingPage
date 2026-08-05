@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 .hero-section {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -159,13 +159,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-content p {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
-    margin-bottom: var(--hero-gap);
+    margin-bottom: 16px; /* reduced to eliminate dead space */
     color: var(--gray);
 }
 
 /* Ensure hero bottom spacing and next section top padding align visually */
 .hero-section {
-    padding-bottom: calc(var(--hero-gap) + 20px);
+    padding-bottom: 0; /* removed extra bottom padding to avoid dead space */
 }
 
 /* Force section top padding to harmonize with hero gap across components */
