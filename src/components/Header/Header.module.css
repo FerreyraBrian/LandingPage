@@ -8,7 +8,7 @@
   align-items: center;
   z-index: 110;
   background: transparent;
-  margin-bottom: -92px;
+  margin-bottom: -110px;
 }
 
 .logoContainer {
@@ -19,11 +19,46 @@
   min-width: 0;
 }
 
+.logoButton {
+  display: inline-flex;
+  position: relative;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logoButton:focus-visible {
+  outline: 3px solid rgba(255, 215, 0, 0.9);
+  outline-offset: 6px;
+}
+
 .logoWrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: translateY(0);
+  z-index: 0;
+}
+
+.logoWrapper::before {
+  content: '';
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.28), transparent 36%),
+    radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.22), transparent 22%),
+    conic-gradient(from 90deg, rgba(255, 205, 60, 0.32), rgba(255, 175, 35, 0.18) 25%, rgba(255, 205, 60, 0.25) 50%, rgba(255, 175, 35, 0.18) 75%, rgba(255, 205, 60, 0.32));
+  filter: blur(10px);
+  opacity: 0.92;
+  transform: scale(0.96);
+  animation: rotateGlow 18s linear infinite, pulseGlow 3.8s ease-in-out infinite;
+  z-index: -1;
 }
 
 .logoCircle {
@@ -102,6 +137,26 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+@keyframes rotateGlow {
+  from {
+    transform: rotate(0deg) scale(0.96);
+  }
+  to {
+    transform: rotate(360deg) scale(0.96);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.92;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .socials {

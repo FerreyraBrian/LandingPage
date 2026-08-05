@@ -86,7 +86,7 @@ export default function Game3({ onComplete, isCompleted }: Props) {
 
   return (
     <div className={styles.gameCard}>
-      <h3 className={styles.gameTitle}>Nível B1 · Contando Histórias</h3>
+      <h3 className={styles.gameTitle}>Nível 3 · Contando Histórias</h3>
       <p className={styles.questionText}>
         {QUESTIONS[currentQ].q.replace('____', '_____')} <br />
         <small style={{ color: 'var(--blue-sky)', fontSize: '0.9rem' }}>

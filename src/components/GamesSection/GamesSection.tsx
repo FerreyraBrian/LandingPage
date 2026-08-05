@@ -15,15 +15,14 @@ type GameMeta = {
   level: number;
   title: string;
   subtitle: string;
-  levelLabel: string;
 };
 
 const GAMES: GameMeta[] = [
-  { level: 1, title: 'Primeiros Passos', subtitle: 'Saudações, números e vocabulário cotidiano.', levelLabel: 'A1' },
-  { level: 2, title: 'Descrevendo o Mundo', subtitle: 'Descrição, rotina e uso de verbos básicos.', levelLabel: 'A2' },
-  { level: 3, title: 'Contando Histórias', subtitle: 'Experiências e conectores para narrar.', levelLabel: 'B1' },
-  { level: 4, title: 'Narrativas e Opiniões', subtitle: 'Estruturas mais avançadas e organização de ideias.', levelLabel: 'B2' },
-  { level: 5, title: 'O Desafio Final', subtitle: 'Subjuntivo, ritmo avançado e fluidez.', levelLabel: 'C1' },
+  { level: 1, title: 'Primeiros Passos', subtitle: 'Saudações, números e vocabulário cotidiano.' },
+  { level: 2, title: 'Descrevendo o Mundo', subtitle: 'Descrição, rotina e uso de verbos básicos.' },
+  { level: 3, title: 'Contando Histórias', subtitle: 'Experiências e conectores para narrar.' },
+  { level: 4, title: 'Narrativas e Opiniões', subtitle: 'Estruturas mais avançadas e organização de ideias.' },
+  { level: 5, title: 'O Desafio Final', subtitle: 'Subjuntivo, ritmo avançado e fluidez.' },
 ];
 
 export default function GamesSection() {
@@ -100,7 +99,7 @@ export default function GamesSection() {
   const progressLevel = unlockedLevel === 0 ? 1 : Math.min(unlockedLevel, 5);
 
   return (
-    <section className={`${styles.section} reveal`}>
+    <section className={`${styles.section} ${styles.heroAfterHero} reveal`}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2>Escalada de Proficiência</h2>
@@ -133,7 +132,7 @@ export default function GamesSection() {
                   style={{ '--card-index': game.level } as CSSProperties}
                 >
                   <div className={styles.cardTopLine}>
-                    <span className={styles.levelPill}>Nível {game.level} · {game.levelLabel}</span>
+                    <span className={styles.levelPill}>Nível {game.level}</span>
                     <span className={styles.cardStatus}>
                       {isCompleted
                         ? 'Concluído'

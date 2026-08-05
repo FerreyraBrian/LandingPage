@@ -71,7 +71,7 @@ export default function Game2({ onComplete, isCompleted }: Props) {
 
   return (
     <div className={styles.gameCard}>
-      <h3 className={styles.gameTitle}>Nível A2 · Descrevendo o Mundo</h3>
+      <h3 className={styles.gameTitle}>Nível 2 · Descrevendo o Mundo</h3>
       <p className={styles.questionText}>{QUESTIONS[currentQ].q}</p>
 
       <div className={styles.optionsGrid} style={{ gridTemplateColumns: '1fr 1fr' }}>

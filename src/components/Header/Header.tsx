@@ -20,11 +20,19 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <div className={styles.logoWrapper}>
-          <div className={styles.logoCircle}>
-            <img src="/images/logo-horizonte.png" alt="Horizonte Espanhol" className={styles.logoImage} />
+        <a
+          href="https://api.whatsapp.com/send?phone=5549998212897&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20curso%21"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.logoButton}
+          aria-label="Contato por WhatsApp"
+        >
+          <div className={styles.logoWrapper}>
+            <div className={styles.logoCircle}>
+              <img src="/images/logo-horizonte.png" alt="Horizonte Espanhol" className={styles.logoImage} />
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
       <div className={styles.brandingSlot}>

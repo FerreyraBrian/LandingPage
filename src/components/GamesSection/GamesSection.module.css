@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+.heroAfterHero {
+  padding-top: var(--section-gap) !important;
+}
+
 .section::before {
   content: '';
   position: absolute;

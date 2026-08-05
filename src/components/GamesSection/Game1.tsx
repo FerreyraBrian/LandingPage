@@ -84,7 +84,7 @@ export default function Game1({ onComplete, isCompleted }: Props) {
 
   return (
     <div className={styles.gameCard}>
-      <h3 className={styles.gameTitle}>Nível A1 · Primeiros Passos</h3>
+      <h3 className={styles.gameTitle}>Nível 1 · Primeiros Passos</h3>
       <p className={styles.questionText}>{QUESTIONS[currentQ].q}</p>
 
       <div className={styles.optionsGrid}>

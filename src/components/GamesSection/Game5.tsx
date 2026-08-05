@@ -81,7 +81,7 @@ export default function Game5({ onComplete, isCompleted }: Props) {
 
   return (
     <div className={styles.gameCard} style={{ border: '2px solid var(--yellow-horizon)' }}>
-      <h3 className={styles.gameTitle} style={{ color: 'var(--yellow-horizon)' }}>Nível C1 · O Desafio Final</h3>
+      <h3 className={styles.gameTitle} style={{ color: 'var(--yellow-horizon)' }}>Nível 5 · O Desafio Final</h3>
 
       <div style={{ background: 'rgba(255, 183, 0, 0.1)', padding: 'var(--section-container-padding)', borderRadius: '15px', marginBottom: 'var(--section-gap)' }}>
         <p style={{ marginBottom: 'var(--space-2)', color: 'var(--blue-sky)' }}>Escolha la opción correcta para completar cada frase con soltura avanzada.</p>

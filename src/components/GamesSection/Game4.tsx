@@ -168,7 +168,7 @@ export default function Game4({ onComplete, isCompleted }: Props) {
 
   return (
     <div className={styles.gameCard}>
-      <h3 className={styles.gameTitle}>Nível B2 · Narrativas e Opiniões</h3>
+      <h3 className={styles.gameTitle}>Nível 4 · Narrativas e Opiniões</h3>
       <p className={styles.questionText}>Forma la frase correcta ordenando las palabras:</p>
 
       <div className={styles.sentenceBuilder} style={{ minHeight: '60px', background: 'rgba(0,0,0,0.2)', borderRadius: '10px', padding: 'var(--section-container-padding)', marginBottom: 'var(--section-gap)', display: 'flex', flexWrap: 'wrap', gap: '10px', border: `2px solid ${status === 'correct' ? '#4caf50' : status === 'incorrect' ? 'var(--red-energy)' : 'var(--blue-sky)'}` }}>
@@ -197,7 +197,7 @@ export default function Game4({ onComplete, isCompleted }: Props) {
           <div className={styles.finishModalContent}>
             <h3 className={styles.finishModalTitle}>¡Felicidades!</h3>
             <p className={styles.finishModalText}>
-              Você completou o nível B2 com sucesso.
+              Você completou o nível 4 com sucesso.
             </p>
             <p className={styles.finishModalText}>
               {weeklyReloadMessage}
