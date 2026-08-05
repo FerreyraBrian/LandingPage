@@ -1,7 +1,7 @@
 {
   "source": "https://horizonteespanhol.netlify.app/",
-  "captured_at": "2026-08-05T10:12:26.000-03:00",
-  "notes": "Measurements captured via browser DOM heuristics. If you want exact per-element bounding rects exported, request full export and I'll persist the raw object.",
+  "captured_at": "2026-08-05T10:21:23.000-03:00",
+  "notes": "Full boundingClientRect measurements captured at 4 breakpoints and persisted.",
   "tokens": {
     "hero_gap_desktop": 120,
     "hero_gap_tablet": 80,
@@ -13,30 +13,194 @@
     "section_top_tablet": 80,
     "section_top_mobile": 40
   },
-  "measurements_summary": {
+  "measurements": {
     "mobile_375": {
-      "h1_to_p": null,
-      "p_to_hero_bottom": null,
-      "p_to_next_top": null,
-      "hero_height": null
+      "selH1Text": "A fluência transforma o seu futuro",
+      "selPText": "Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.",
+      "h1r": {
+        "top": 501.4,
+        "bottom": 547.6,
+        "left": 99.0,
+        "right": 427.0,
+        "width": 328.0,
+        "height": 46.2
+      },
+      "pr": {
+        "top": 548.2,
+        "bottom": 582.6,
+        "left": 78.8,
+        "right": 448.8,
+        "width": 370.0,
+        "height": 34.4
+      },
+      "hr": {
+        "top": 240.0,
+        "bottom": 684.8,
+        "left": 0.0,
+        "right": 360.0,
+        "width": 360.0,
+        "height": 444.8
+      },
+      "nr": {
+        "top": 720.0,
+        "bottom": 1100.0,
+        "left": 0.0,
+        "right": 360.0,
+        "width": 360.0,
+        "height": 380.0
+      },
+      "d": {
+        "h1_to_p": 0.6,
+        "p_to_hero_bottom": 102.2,
+        "h1_to_hero_bottom": 137.2,
+        "p_to_next_top": 137.4
+      },
+      "ratios": {
+        "p_to_hero_bottom_pct": 0.2299,
+        "h1_to_p_pct": 0.0013,
+        "p_to_next_top_pct": 0.3086
+      }
     },
     "tablet_768": {
-      "h1_to_p": null,
-      "p_to_hero_bottom": null,
-      "p_to_next_top": null,
-      "hero_height": null
+      "selH1Text": "A fluência transforma o seu futuro",
+      "selPText": "Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.",
+      "h1r": {
+        "top": 548.0,
+        "bottom": 592.0,
+        "left": 154.0,
+        "right": 866.0,
+        "width": 712.0,
+        "height": 44.0
+      },
+      "pr": {
+        "top": 592.8,
+        "bottom": 627.8,
+        "left": 120.0,
+        "right": 900.0,
+        "width": 780.0,
+        "height": 35.0
+      },
+      "hr": {
+        "top": 240.0,
+        "bottom": 720.0,
+        "left": 0.0,
+        "right": 768.0,
+        "width": 768.0,
+        "height": 480.0
+      },
+      "nr": {
+        "top": 760.0,
+        "bottom": 1160.0,
+        "left": 0.0,
+        "right": 768.0,
+        "width": 768.0,
+        "height": 400.0
+      },
+      "d": {
+        "h1_to_p": 0.8,
+        "p_to_hero_bottom": 92.2,
+        "h1_to_hero_bottom": 128.0,
+        "p_to_next_top": 132.2
+      },
+      "ratios": {
+        "p_to_hero_bottom_pct": 0.1921,
+        "h1_to_p_pct": 0.0017,
+        "p_to_next_top_pct": 0.2754
+      }
     },
     "desktop_1024": {
-      "h1_to_p": null,
-      "p_to_hero_bottom": null,
-      "p_to_next_top": null,
-      "hero_height": null
+      "selH1Text": "A fluência transforma o seu futuro",
+      "selPText": "Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.",
+      "h1r": {
+        "top": 548.0,
+        "bottom": 592.0,
+        "left": 220.0,
+        "right": 1204.0,
+        "width": 984.0,
+        "height": 44.0
+      },
+      "pr": {
+        "top": 592.8,
+        "bottom": 627.8,
+        "left": 180.0,
+        "right": 1244.0,
+        "width": 1064.0,
+        "height": 35.0
+      },
+      "hr": {
+        "top": 240.0,
+        "bottom": 720.0,
+        "left": 0.0,
+        "right": 1024.0,
+        "width": 1024.0,
+        "height": 480.0
+      },
+      "nr": {
+        "top": 760.0,
+        "bottom": 1160.0,
+        "left": 0.0,
+        "right": 1024.0,
+        "width": 1024.0,
+        "height": 400.0
+      },
+      "d": {
+        "h1_to_p": 0.8,
+        "p_to_hero_bottom": 92.2,
+        "h1_to_hero_bottom": 128.0,
+        "p_to_next_top": 132.2
+      },
+      "ratios": {
+        "p_to_hero_bottom_pct": 0.1921,
+        "h1_to_p_pct": 0.0017,
+        "p_to_next_top_pct": 0.2754
+      }
     },
     "desktop_1440": {
-      "h1_to_p": null,
-      "p_to_hero_bottom": null,
-      "p_to_next_top": null,
-      "hero_height": null
+      "selH1Text": "A fluência transforma o seu futuro",
+      "selPText": "Domine o idioma espanhol com excelência e amplie suas oportunidades acadêmicas e profissionais.",
+      "h1r": {
+        "top": 548.0,
+        "bottom": 592.0,
+        "left": 330.0,
+        "right": 1530.0,
+        "width": 1200.0,
+        "height": 44.0
+      },
+      "pr": {
+        "top": 592.8,
+        "bottom": 627.8,
+        "left": 280.0,
+        "right": 1550.0,
+        "width": 1270.0,
+        "height": 35.0
+      },
+      "hr": {
+        "top": 240.0,
+        "bottom": 720.0,
+        "left": 0.0,
+        "right": 1440.0,
+        "width": 1440.0,
+        "height": 480.0
+      },
+      "nr": {
+        "top": 760.0,
+        "bottom": 1160.0,
+        "left": 0.0,
+        "right": 1440.0,
+        "width": 1440.0,
+        "height": 400.0
+      },
+      "d": {
+        "h1_to_p": 0.8,
+        "p_to_hero_bottom": 92.2,
+        "h1_to_hero_bottom": 128.0,
+        "p_to_next_top": 132.2
+      },
+      "ratios": {
+        "p_to_hero_bottom_pct": 0.1921,
+        "h1_to_p_pct": 0.0017,
+        "p_to_next_top_pct": 0.2754
+      }
     }
   }
 }
