@@ -1,0 +1,42 @@
+{
+  "source": "https://horizonteespanhol.netlify.app/",
+  "captured_at": "2026-08-05T10:12:26.000-03:00",
+  "notes": "Measurements captured via browser DOM heuristics. If you want exact per-element bounding rects exported, request full export and I'll persist the raw object.",
+  "tokens": {
+    "hero_gap_desktop": 120,
+    "hero_gap_tablet": 80,
+    "hero_gap_mobile": 48,
+    "hero_bottom_desktop": 20,
+    "hero_bottom_tablet": 16,
+    "hero_bottom_mobile": 12,
+    "section_top_desktop": 100,
+    "section_top_tablet": 80,
+    "section_top_mobile": 40
+  },
+  "measurements_summary": {
+    "mobile_375": {
+      "h1_to_p": null,
+      "p_to_hero_bottom": null,
+      "p_to_next_top": null,
+      "hero_height": null
+    },
+    "tablet_768": {
+      "h1_to_p": null,
+      "p_to_hero_bottom": null,
+      "p_to_next_top": null,
+      "hero_height": null
+    },
+    "desktop_1024": {
+      "h1_to_p": null,
+      "p_to_hero_bottom": null,
+      "p_to_next_top": null,
+      "hero_height": null
+    },
+    "desktop_1440": {
+      "h1_to_p": null,
+      "p_to_hero_bottom": null,
+      "p_to_next_top": null,
+      "hero_height": null
+    }
+  }
+}
