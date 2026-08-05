@@ -84,16 +84,15 @@
   z-index: 20;
   width: min(92vw, 860px);
   margin-top: 0;
-  gap: 6px; /* tightened gap for consistency */
   text-align: center;
   overflow: visible;
 }
 
-.heroText h1{
+.heroText h1 {
   margin-bottom: 6px;
 }
 
-.heroText p{
+.heroText p {
   margin-bottom: 0;
 }
 
@@ -101,7 +100,7 @@
   width: min(100%, 920px);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 22px;
   padding: 0 20px;
   box-sizing: border-box;
 }
@@ -118,7 +117,7 @@
 }
 
 .heroSubtitleBlock {
-  margin-top: 0;
+  margin-top: 12px;
   width: min(100%, 860px);
 }
 
@@ -145,7 +144,7 @@
 
   .heroCopy {
     padding: 10px 12px 12px;
-    gap: 8px;
+    gap: 18px;
   }
 }
 
@@ -163,7 +162,7 @@
 
   .heroCopy {
     padding: 10px 10px 12px;
-    gap: 8px;
+    gap: 18px;
   }
 }
 
@@ -200,7 +199,7 @@
 
   .heroCopy {
     padding: 16px 12px;
-    gap: 12px;
+    gap: 18px;
   }
 
   .heroTitleBlock {
@@ -208,7 +207,7 @@
   }
 
   .heroSubtitleBlock {
-    margin-top: 0;
+    margin-top: 10px;
   }
 
   .heroText h1 {
@@ -266,6 +265,10 @@
     gap: 18px;
   }
 
+  .heroSubtitleBlock {
+    margin-top: 10px;
+  }
+
   .slide {
     width: min(100vw, 580px);
     height: min(122vw, 620px);
@@ -303,7 +306,11 @@
 
   .heroCopy {
     padding: 0 8px;
-    gap: 14px;
+    gap: 16px;
+  }
+
+  .heroSubtitleBlock {
+    margin-top: 8px;
   }
 
   .slide {
@@ -342,7 +349,11 @@
 
   .heroCopy {
     padding: 0 8px;
-    gap: 12px;
+    gap: 14px;
+  }
+
+  .heroSubtitleBlock {
+    margin-top: 8px;
   }
 
   .slide {
@@ -382,7 +393,11 @@
 
   .heroCopy {
     padding: 0 6px;
-    gap: 12px;
+    gap: 14px;
+  }
+
+  .heroSubtitleBlock {
+    margin-top: 8px;
   }
 
   .slide {
