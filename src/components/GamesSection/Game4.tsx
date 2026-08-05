@@ -171,18 +171,18 @@ export default function Game4({ onComplete, isCompleted }: Props) {
       <h3 className={styles.gameTitle}>Nível B2 · Narrativas e Opiniões</h3>
       <p className={styles.questionText}>Forma la frase correcta ordenando las palabras:</p>
 
-      <div className={styles.sentenceBuilder} style={{ minHeight: '60px', background: 'rgba(0,0,0,0.2)', borderRadius: '10px', padding: '15px', marginBottom: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px', border: `2px solid ${status === 'correct' ? '#4caf50' : status === 'incorrect' ? 'var(--red-energy)' : 'var(--blue-sky)'}` }}>
+      <div className={styles.sentenceBuilder} style={{ minHeight: '60px', background: 'rgba(0,0,0,0.2)', borderRadius: '10px', padding: 'var(--section-container-padding)', marginBottom: 'var(--section-gap)', display: 'flex', flexWrap: 'wrap', gap: '10px', border: `2px solid ${status === 'correct' ? '#4caf50' : status === 'incorrect' ? 'var(--red-energy)' : 'var(--blue-sky)'}` }}>
         {selectedWords.map((word, i) => (
-          <button key={`${word}-${i}`} onClick={() => handleRemoveWord(i)} className={styles.wordChip} style={{ padding: '8px 15px', borderRadius: '20px', background: 'var(--yellow-horizon)', color: 'var(--blue-deep)', fontWeight: 'bold' }}>
+          <button key={`${word}-${i}`} onClick={() => handleRemoveWord(i)} className={styles.wordChip} style={{ padding: 'var(--space-2) var(--space-3)', borderRadius: '20px', background: 'var(--yellow-horizon)', color: 'var(--blue-deep)', fontWeight: 'bold' }}>
             {word}
           </button>
         ))}
         {selectedWords.length === 0 && <span style={{ color: 'rgba(255,255,255,0.4)', alignSelf: 'center' }}>Tu frase aparecerá aquí...</span>}
       </div>
 
-      <div className={styles.availableWords} style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center', marginBottom: '30px' }}>
+      <div className={styles.availableWords} style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center', marginBottom: 'var(--section-gap)' }}>
         {availableWords.map((word, i) => (
-          <button key={`${word}-${i}`} onClick={() => handleWordClick(word)} className={styles.wordChip} style={{ padding: '8px 15px', borderRadius: '20px', background: 'transparent', border: '1px solid var(--blue-sky)', color: 'var(--white)' }}>
+          <button key={`${word}-${i}`} onClick={() => handleWordClick(word)} className={styles.wordChip} style={{ padding: 'var(--space-2) var(--space-3)', borderRadius: '20px', background: 'transparent', border: '1px solid var(--blue-sky)', color: 'var(--white)' }}>
             {word}
           </button>
         ))}

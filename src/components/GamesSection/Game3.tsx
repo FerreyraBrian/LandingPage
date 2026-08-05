@@ -94,7 +94,7 @@ export default function Game3({ onComplete, isCompleted }: Props) {
         </small>
       </p>
 
-      <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: '20px' }}>
+      <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: 'var(--section-gap)' }}>
         <input
           type="text"
           value={inputVal}

@@ -83,12 +83,12 @@ export default function Game5({ onComplete, isCompleted }: Props) {
     <div className={styles.gameCard} style={{ border: '2px solid var(--yellow-horizon)' }}>
       <h3 className={styles.gameTitle} style={{ color: 'var(--yellow-horizon)' }}>Nível C1 · O Desafio Final</h3>
 
-      <div style={{ background: 'rgba(255, 183, 0, 0.1)', padding: '20px', borderRadius: '15px', marginBottom: '30px' }}>
-        <p style={{ marginBottom: '15px', color: 'var(--blue-sky)' }}>Escolha la opción correcta para completar cada frase con soltura avanzada.</p>
+      <div style={{ background: 'rgba(255, 183, 0, 0.1)', padding: 'var(--section-container-padding)', borderRadius: '15px', marginBottom: 'var(--section-gap)' }}>
+        <p style={{ marginBottom: 'var(--space-2)', color: 'var(--blue-sky)' }}>Escolha la opción correcta para completar cada frase con soltura avanzada.</p>
       </div>
 
-      <div style={{ textAlign: 'left', background: 'rgba(0,0,0,0.2)', padding: '20px', borderRadius: '15px' }}>
-        <p className={styles.questionText} style={{ marginBottom: '20px', fontWeight: 'bold' }}>
+      <div style={{ textAlign: 'left', background: 'rgba(0,0,0,0.2)', padding: 'var(--section-container-padding)', borderRadius: '15px' }}>
+        <p className={styles.questionText} style={{ marginBottom: 'var(--section-gap)', fontWeight: 'bold' }}>
           {currentQ + 1}/5. {QUESTIONS[currentQ].q}
         </p>
 
@@ -99,7 +99,7 @@ export default function Game5({ onComplete, isCompleted }: Props) {
               onClick={() => handleSelect(opt)}
               disabled={!!selectedAns}
               className={`${styles.optionBtn} ${selectedAns === opt ? (QUESTIONS[currentQ].options.indexOf(opt) === QUESTIONS[currentQ].correct ? styles.correct : styles.incorrect) : ''}`}
-              style={{ textAlign: 'left', padding: '12px 20px' }}
+              style={{ textAlign: 'left', padding: 'var(--space-2) var(--section-container-padding)' }}
             >
               {opt}
             </button>
