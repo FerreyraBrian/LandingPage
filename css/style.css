@@ -11,6 +11,20 @@
     
     --font-heading: 'Montserrat', sans-serif;
     --font-text: 'Nunito', sans-serif;
+
+    /* Spacing system for consistent vertical rhythm between hero and following sections */
+    --hero-gap-desktop: 120px;
+    --hero-gap-tablet: 80px;
+    --hero-gap-mobile: 48px;
+
+    /* Active hero gap (overridden by media queries) */
+    --hero-gap: var(--hero-gap-desktop);
+
+    /* Section top padding to harmonize with hero gap */
+    --section-top-desktop: 100px;
+    --section-top-tablet: 80px;
+    --section-top-mobile: 40px;
+    --section-top: var(--section-top-desktop);
 }
 
 * {
@@ -145,8 +159,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-content p {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
-    margin-bottom: 40px;
+    margin-bottom: var(--hero-gap);
     color: var(--gray);
+}
+
+/* Ensure hero bottom spacing and next section top padding align visually */
+.hero-section {
+    padding-bottom: calc(var(--hero-gap) + 20px);
+}
+
+/* Force section top padding to harmonize with hero gap across components */
+.jogo-section, .formulario-section {
+    padding-top: var(--section-top) !important;
 }
 
 .carousel-indicators {
@@ -521,6 +545,28 @@ footer {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive variable adjustments to keep vertical rhythm consistent */
+@media (max-width: 480px) {
+    :root {
+        --hero-gap: var(--hero-gap-mobile);
+        --section-top: var(--section-top-mobile);
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+    :root {
+        --hero-gap: var(--hero-gap-tablet);
+        --section-top: var(--section-top-tablet);
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --hero-gap: var(--hero-gap-desktop);
+        --section-top: var(--section-top-desktop);
+    }
 }
 
 @media (max-width: 768px) {
