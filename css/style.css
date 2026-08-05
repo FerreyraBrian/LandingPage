@@ -113,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: flex-end;
     justify-content: center;
     text-align: center;
-    padding-bottom: 20px; /* small breathing room from the container bottom */
+    padding-bottom: var(--hero-bottom); /* small breathing room from the container bottom */
 }
 
 .carousel {
@@ -174,7 +174,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Ensure hero bottom spacing and next section top padding align visually */
 .hero-section {
-    padding-bottom: 0; /* removed extra bottom padding to avoid dead space */
+    padding-bottom: var(--hero-bottom); /* harmonized via token */
 }
 
 /* Force section top padding to harmonize with hero gap across components */
@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
    2. JOGO DA FORCA
    ========================================================================== */
 .jogo-section {
-    padding: 100px 0;
+    padding: var(--section-top) 0;
     background-color: #08192a; /* Slightly darker than base */
     position: relative;
     box-shadow: var(--shadow-ethereal);
@@ -436,7 +436,7 @@ canvas {
    3. FORMULÁRIO DE CAPTURA
    ========================================================================== */
 .formulario-section {
-    padding: 100px 0;
+    padding: var(--section-top) 0;
     background: linear-gradient(to bottom, #08192a, var(--bg-dark));
 }
 
