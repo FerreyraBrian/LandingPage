@@ -1,7 +1,7 @@
 .carouselContainer {
   position: relative;
   margin-top: 0;
-  min-height: clamp(760px, 100svh, 980px);
+  min-height: clamp(560px, 70svh, 980px); /* slightly reduced to avoid excessive empty space */
   width: 100%;
   overflow: hidden;
   background:
@@ -9,9 +9,10 @@
     url('/images/hero-background.svg') center/cover;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  /* align hero content to the bottom so spacing to the container is consistent */
+  justify-content: flex-end;
   align-items: center;
-  padding: clamp(22px, 4vw, 40px) var(--section-padding-inline) 0;
+  padding: clamp(22px, 4vw, 40px) var(--section-padding-inline) var(--hero-bottom);
   margin-bottom: var(--section-gap);
 }
 
@@ -83,9 +84,17 @@
   z-index: 20;
   width: min(92vw, 860px);
   margin-top: 0;
-  gap: 8px;
+  gap: 6px; /* tightened gap for consistency */
   text-align: center;
   overflow: visible;
+}
+
+.heroText h1{
+  margin-bottom: 6px;
+}
+
+.heroText p{
+  margin-bottom: 0;
 }
 
 .heroCopy {

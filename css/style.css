@@ -25,6 +25,12 @@
     --section-top-tablet: 80px;
     --section-top-mobile: 40px;
     --section-top: var(--section-top-desktop);
+
+    /* Small bottom padding to keep hero content from touching container edge */
+    --hero-bottom-desktop: 20px;
+    --hero-bottom-tablet: 16px;
+    --hero-bottom-mobile: 12px;
+    --hero-bottom: var(--hero-bottom-desktop);
 }
 
 * {
@@ -555,6 +561,7 @@ footer {
     :root {
         --hero-gap: var(--hero-gap-mobile);
         --section-top: var(--section-top-mobile);
+        --hero-bottom: var(--hero-bottom-mobile);
     }
 }
 
@@ -562,6 +569,7 @@ footer {
     :root {
         --hero-gap: var(--hero-gap-tablet);
         --section-top: var(--section-top-tablet);
+        --hero-bottom: var(--hero-bottom-tablet);
     }
 }
 
@@ -569,6 +577,7 @@ footer {
     :root {
         --hero-gap: var(--hero-gap-desktop);
         --section-top: var(--section-top-desktop);
+        --hero-bottom: var(--hero-bottom-desktop);
     }
 }
 
