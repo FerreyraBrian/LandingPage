@@ -176,22 +176,21 @@
   grid-column: 3 / 4;
 }
 
+/* Mobile-first: hamburger trigger + dropdown are the default state. */
 .desktopActions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: none;
 }
 
 .menuButton {
-  display: none;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(14px);
   transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
   color: var(--text-color);
@@ -211,19 +210,18 @@
 
 .menuIcon {
   position: relative;
-  width: 20px;
+  width: 18px;
   height: 2px;
   background: transparent;
   display: inline-block;
 }
 
 .menuIcon::before,
-.menuIcon::after,
 .menuIcon::after {
   content: '';
   position: absolute;
   left: 0;
-  width: 20px;
+  width: 18px;
   height: 2px;
   background: currentColor;
   border-radius: 999px;
@@ -231,11 +229,11 @@
 }
 
 .menuIcon::before {
-  top: -6px;
+  top: -5px;
 }
 
 .menuIcon::after {
-  top: 6px;
+  top: 5px;
 }
 
 .menuButton[aria-expanded='true'] .menuIcon {
@@ -243,15 +241,112 @@
 }
 
 .menuButton[aria-expanded='true'] .menuIcon::before {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
 
 .menuButton[aria-expanded='true'] .menuIcon::after {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
 }
 
+/* Dropdown panel: half the footprint of the previous version (min-width, padding, gap and every child all scaled down). */
 .mobileMenu {
-  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 12px;
+  background: rgba(10, 24, 52, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(28px) saturate(180%);
+  width: min(120px, 45vw);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 150;
+}
+
+:root[data-theme='light'] .mobileMenu {
+  background: rgba(247, 239, 226, 0.96);
+  border-color: rgba(31, 74, 107, 0.16);
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobileMenu .themeToggle {
+  width: 100%;
+  justify-content: center;
+  padding: 0.3rem 0.4rem;
+  gap: 0.3rem;
+  min-height: 32px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mobileMenu .themeToggleTrack {
+  width: 30px;
+  height: 16px;
+}
+
+.mobileMenu .themeToggleThumb {
+  width: 12px;
+  height: 12px;
+}
+
+.mobileMenu .themeToggleThumbActive {
+  transform: translateX(14px);
+}
+
+.mobileMenu .themeToggleLabel {
+  font-size: 0.6rem;
+}
+
+.mobileMenu .socialLink {
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  padding: 7px 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.mobileMenu .socialLink:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.mobileMenu .socialLink svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Single breakpoint switches from the mobile dropdown to the inline desktop actions row. */
+@media (min-width: 641px) {
+  .desktopActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .mobileMenu,
+  .mobileMenuOpen {
+    display: none;
+  }
 }
 
 .themeToggle {
@@ -462,15 +557,6 @@
 }
 
 @media (max-width: 640px) {
-  .desktopActions {
-    display: none;
-  }
-
-  .menuButton {
-    display: inline-flex;
-    color: var(--text-color);
-  }
-
   .actions {
     position: relative;
     gap: 6px;
@@ -520,39 +606,6 @@
     margin-top: 18px;
   }
 
-  .mobileMenu {
-    position: absolute;
-    top: calc(100% + 4px);
-    right: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 16px;
-    border-radius: 22px;
-    background: rgba(10, 24, 52, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.26);
-    backdrop-filter: blur(28px) saturate(180%);
-    min-width: min(240px, 86vw);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-12px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    z-index: 150;
-  }
-
-  :root[data-theme='light'] .mobileMenu {
-    background: rgba(247, 239, 226, 0.96);
-    border-color: rgba(31, 74, 107, 0.16);
-  }
-
-  .mobileMenuOpen {
-    display: flex;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
   .logoCircle {
     width: 110px;
     box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
@@ -561,60 +614,6 @@
   .socials {
     gap: 6px;
     padding-top: 0;
-  }
-
-  .themeToggle {
-    width: 100%;
-    padding: 0.6rem 0.8rem;
-    gap: 0.6rem;
-    min-height: 44px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    transform: translateY(12px);
-  }
-
-  .themeToggleTrack {
-    width: 42px;
-    height: 22px;
-  }
-
-  .themeToggleThumb {
-    width: 16px;
-    height: 16px;
-  }
-
-  .themeToggleThumbActive {
-    transform: translateX(20px);
-  }
-
-  .themeToggleLabel {
-    font-size: 0.7rem;
-  }
-
-  .socialLink {
-    width: 100%;
-    height: auto;
-    padding: 12px 0;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background 0.25s ease, transform 0.25s ease;
-  }
-
-  .socialLink:hover {
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-1px);
-  }
-
-  .socialLink svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .mobileMenu .themeToggle,
-  .mobileMenu .socialLink {
-    justify-content: center;
   }
 }
 
@@ -700,34 +699,6 @@
     grid-column: 3 / 4;
     transform: none;
   }
-
-  .themeToggle {
-    min-height: 36px;
-    padding: 0.45rem 0.6rem;
-    border-radius: 14px;
-  }
-
-  .themeToggleTrack {
-    width: 36px;
-    height: 18px;
-  }
-
-  .themeToggleLabel {
-    font-size: 0.64rem;
-  }
-
-  .actions {
-    transform: none;
-  }
-
-  .socialLink {
-    padding: 10px 0;
-  }
-
-  .socialLink svg {
-    width: 20px;
-    height: 20px;
-  }
 }
 
 @media (max-width: 250px) {
@@ -757,41 +728,8 @@
     width: 94px;
   }
 
-  .themeToggle {
-    min-height: 36px;
-    padding: 0.45rem 0.6rem;
-    border-radius: 14px;
-  }
-
-  .themeToggleTrack {
-    width: 36px;
-    height: 18px;
-  }
-
-  .themeToggleThumb {
-    width: 14px;
-    height: 14px;
-  }
-
-  .themeToggleThumbActive {
-    transform: translateX(18px);
-  }
-
-  .themeToggleLabel {
-    font-size: 0.6rem;
-  }
-
   .actions {
     transform: none;
-  }
-
-  .socialLink {
-    padding: 8px 0;
-  }
-
-  .socialLink svg {
-    width: 18px;
-    height: 18px;
   }
 }
 
